@@ -9,7 +9,7 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='48'%3E%E2%9D%A4%EF%B8%8F%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --text: #1a1a1a;
@@ -96,10 +96,6 @@
       transform: translateY(20px);
       transition-duration: 620ms;
     }
-    .swatch.reveal {
-      transform: translateY(16px) scale(0.98);
-      transition-duration: 520ms;
-    }
     h2 {
       margin: 0 0 1.2rem; text-align: center; font-family: "Cormorant Garamond", serif;
       letter-spacing: 0.09em; text-transform: uppercase; font-size: clamp(2.1rem, 4vw, 3.45rem); font-weight: 600;
@@ -112,111 +108,6 @@
     .count-box { border: 1px solid #d8cfbf; padding: 0.9rem 0.35rem; background: #fffdf8cf; }
     .count-value { display: block; font-size: clamp(1.3rem, 4vw, 2rem); font-weight: 700; line-height: 1.2; }
     .count-label { color: var(--muted); font-size: 0.86rem; }
-    .carousel-shell {
-      width: min(760px, 92%);
-      margin: 1.1rem auto 0;
-      position: relative;
-      padding: 0 56px;
-    }
-    .carousel-side {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 84px;
-      height: min(58vw, 360px);
-      max-height: 88%;
-      background: #efe6d7cc;
-      border: 1px solid #d5c7b1;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .carousel-side img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: saturate(0.85) brightness(0.96);
-      transform: scale(1.04);
-      opacity: 1;
-      transition: opacity 220ms ease, transform 260ms ease;
-    }
-    .carousel-side.is-updating img {
-      opacity: 0.35;
-      transform: scale(1.08) translateX(4px);
-    }
-    .carousel-side.prev.is-updating img {
-      transform: scale(1.08) translateX(-4px);
-    }
-    .carousel-side.prev {
-      left: 0;
-      border-radius: 18px 0 0 18px;
-      border-right: none;
-    }
-    .carousel-side.next {
-      right: 0;
-      border-radius: 0 18px 18px 0;
-      border-left: none;
-    }
-    .carousel-box {
-      overflow: hidden;
-      border: 1px solid #d7cab4;
-      background: #fffdf7;
-      border-radius: 28px;
-      box-shadow: 0 16px 28px #00000018;
-      position: relative;
-      z-index: 1;
-    }
-    .carousel-track {
-      display: flex;
-      transition: transform 420ms ease;
-    }
-    .carousel-slide {
-      min-width: 100%;
-      aspect-ratio: 4 / 5;
-      margin: 0;
-    }
-    .carousel-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid #c8bba5;
-      background: #f8efe0f2;
-      color: #665741;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      font-size: 1.25rem;
-      line-height: 1;
-      font-weight: 600;
-      z-index: 2;
-    }
-    .carousel-arrow.prev { left: 18px; }
-    .carousel-arrow.next { right: 18px; }
-    .carousel-dots {
-      margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 0.55rem;
-    }
-    .carousel-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      border: 1px solid #9f8f77;
-      background: #f2e9db;
-      cursor: pointer;
-      padding: 0;
-    }
-    .carousel-dot.active { background: #7f6d52; }
 
     .program {
       width: min(860px, 100%);
@@ -227,18 +118,25 @@
     }
     .program-item {
       display: grid;
-      grid-template-columns: 120px 56px 1fr;
+      /* Fixed tracks so every row shares the same column axis (icons line up). */
+      grid-template-columns: 7.35rem 84px minmax(0, 1fr);
       align-items: start;
-      column-gap: 1.6rem;
+      column-gap: 1.15rem;
       row-gap: 0.4rem;
-      padding: 0.3rem 0;
+      padding: 0.35rem 0;
+    }
+    .program-item > div:last-child {
+      min-width: 0;
+      text-align: left;
     }
     .program-time {
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(2rem, 4vw, 3rem);
       line-height: 1;
       text-align: right;
-      padding-top: 0.2rem;
+      justify-self: stretch;
+      padding-top: 0.15rem;
+      box-sizing: border-box;
     }
     .program-icon {
       width: 42px;
@@ -253,25 +151,106 @@
       background: #fffaf0bf;
     }
     .program-icon-image {
-      width: 76px;
-      height: 76px;
+      width: 84px;
+      height: 84px;
       border: none;
       background: transparent;
       object-fit: contain;
-      opacity: 0.88;
+      opacity: 0.8;
       mix-blend-mode: multiply;
+      justify-self: center;
+      align-self: start;
+      display: block;
     }
     .program-title {
       margin: 0;
-      font-size: clamp(1.2rem, 2.2vw, 1.85rem);
-      font-weight: 600;
+      font-size: clamp(1.08rem, 2vw, 1.42rem);
+      font-weight: 500;
       font-family: "Cormorant Garamond", serif;
+      letter-spacing: 0.02em;
+      color: #3a342c;
     }
     .program-text {
-      margin: 0.35rem 0 0;
-      color: #3f3f3f;
+      margin: 0;
+      color: #4d4740;
       font-size: clamp(0.96rem, 2.1vw, 1.05rem);
       max-width: 620px;
+    }
+    .program-item > div > .program-title + .program-text {
+      margin-top: 0.42rem;
+    }
+    .program-item > div > .program-text:first-child {
+      margin-top: 0;
+    }
+    .program-text p {
+      margin: 0.48rem 0 0;
+      line-height: 1.58;
+    }
+    /* Lead line: slightly larger than body, medium weight - not a second headline */
+    .program-text p:first-child {
+      margin-top: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.05rem, 1.9vw, 1.3rem);
+      font-weight: 500;
+      line-height: 1.38;
+      letter-spacing: 0.02em;
+      color: #3a342c;
+    }
+    .program-text p:first-child strong {
+      font-weight: 500;
+    }
+    .program-time-slot {
+      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+      line-height: 1.12;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding-top: 0.28rem;
+    }
+    .program-day-block {
+      margin: 0 auto;
+      max-width: min(860px, 100%);
+    }
+    .program-day-block + .program-day-block {
+      margin-top: 2.5rem;
+      padding-top: 2.35rem;
+      border-top: 1px solid rgba(111, 98, 80, 0.22);
+    }
+    .program-day-header {
+      text-align: center;
+      margin: 0 auto 1.05rem;
+      max-width: 40rem;
+    }
+    .program-day-index {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.5rem, 7vw, 3.4rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0.12em;
+      color: #6f6250;
+      margin-bottom: 0.4rem;
+    }
+    .program-day-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.28rem, 2.6vw, 1.72rem);
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0.045em;
+      margin: 0;
+      color: #2f2922;
+    }
+    .program-rule {
+      max-width: 700px;
+      margin: 1.4rem auto 0;
+      text-align: center;
+      font-style: italic;
+      color: #534b42;
+      font-size: clamp(0.96rem, 1.9vw, 1.04rem);
+      line-height: 1.55;
+      padding: 0 0.5rem;
+    }
+    .program-day-block .program-rule {
+      margin-bottom: 0.75rem;
     }
     .program-ornament {
       width: min(360px, 78vw);
@@ -294,17 +273,16 @@
       pointer-events: none;
     }
 
-    .dress-description { text-align: center; max-width: 740px; margin: 0 auto 1.5rem; color: #2f2f2f; }
-    .palette {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0.8rem;
-      width: min(600px, 100%);
-      margin: 0 auto;
+    .location-how {
+      text-align: center;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+      font-weight: 600;
+      margin: 1.25rem auto 0.45rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #222;
     }
-    .swatch { text-align: center; }
-    .swatch-color { width: 100%; aspect-ratio: 1 / 1; border: 1px solid #00000012; box-shadow: 0 7px 18px #00000012; }
-    .swatch-code { margin-top: 0.45rem; font-size: 0.78rem; color: #5a5145; letter-spacing: 0.08em; }
     .location-photo {
       width: 100%;
       margin: 0;
@@ -349,122 +327,181 @@
       display: block;
     }
 
+    /* RSVP: editorial title + geometric sans body (reference layout) */
+    .rsvp-section .rsvp-page-title {
+      margin: 0 auto 2.25rem;
+      max-width: 22rem;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: clamp(1.65rem, 3.8vw, 2.45rem);
+      letter-spacing: 0.16em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      text-align: center;
+      color: #111;
+    }
     .rsvp-wrap {
-      max-width: 780px;
+      max-width: 520px;
       margin: 0 auto;
-      background: linear-gradient(180deg, #fffcf5d9 0%, #faf5ead9 100%);
-      border: 1px solid #d4c8b5;
-      padding: clamp(1.4rem, 3vw, 2.5rem);
-      box-shadow: 0 14px 34px #0000000d;
+      background: transparent;
+      border: none;
+      padding: 0 clamp(0.5rem, 3vw, 1rem) 2rem;
+      box-shadow: none;
     }
     .rsvp-intro {
       text-align: center;
-      color: #3b362f;
-      margin: 0;
-      font-size: clamp(0.98rem, 1.5vw, 1.08rem);
-      line-height: 1.55;
+      color: #6f6f6f;
+      margin: 0 auto;
+      max-width: 26rem;
+      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
+      font-size: clamp(0.82rem, 1.35vw, 0.92rem);
+      font-weight: 400;
+      line-height: 1.65;
     }
     .rsvp-intro + .rsvp-intro {
-      margin-top: 0.4rem;
+      margin-top: 0.35rem;
     }
     .rsvp-form {
-      margin: 2rem auto 0;
-      max-width: 700px;
+      margin: 2.5rem auto 0;
+      max-width: 100%;
+      text-align: left;
     }
     .rsvp-group {
-      margin-bottom: 1.7rem;
+      margin-bottom: 2.1rem;
     }
     .rsvp-label {
-      font-size: clamp(1.85rem, 3.1vw, 2.35rem);
-      letter-spacing: 0.012em;
-      font-weight: 700;
-      font-family: "Cormorant Garamond", serif;
-      line-height: 1.08;
-      margin: 0 0 0.42rem;
-      color: #191713;
+      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
+      font-size: clamp(0.88rem, 1.5vw, 0.98rem);
+      letter-spacing: 0.04em;
+      font-weight: 600;
+      line-height: 1.45;
+      margin: 0 0 0.55rem;
+      color: #111;
+      text-align: left;
     }
     .rsvp-help {
-      margin: 0.1rem 0 0.65rem;
-      color: #6a6258;
-      font-size: 0.97rem;
+      margin: 0 0 0.65rem;
+      color: #7a7a7a;
+      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.55;
     }
     .rsvp-list {
       margin: 0;
       padding: 0;
       list-style: none;
       display: grid;
-      gap: 0.52rem;
+      gap: 0.62rem;
     }
     .rsvp-item label {
       display: inline-flex;
       align-items: center;
       gap: 0.65rem;
-      font-size: 1.11rem;
+      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
+      font-size: 0.92rem;
+      font-weight: 400;
       cursor: pointer;
-      color: #26221b;
-      line-height: 1.35;
+      color: #222;
+      line-height: 1.45;
     }
     .rsvp-item input[type="radio"],
     .rsvp-item input[type="checkbox"] {
-      width: 19px;
-      height: 19px;
-      accent-color: #2d281f;
+      width: 17px;
+      height: 17px;
+      accent-color: #111;
       transform: translateY(-1px);
     }
     .rsvp-divider {
       border: 0;
-      border-top: 1px solid #b8ac9a;
-      margin: 1.8rem 0 1.6rem;
+      border-top: 1px solid #d8d8d8;
+      margin: 2.1rem 0 2rem;
+    }
+    .rsvp-group-name {
+      margin-bottom: 2.1rem;
+    }
+    .rsvp-name-block {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .rsvp-name-label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+      cursor: text;
+    }
+    .rsvp-name-title {
+      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
+      font-size: clamp(0.88rem, 1.5vw, 0.98rem);
+      letter-spacing: 0.04em;
+      font-weight: 600;
+      line-height: 1.35;
+      color: #111;
+    }
+    .rsvp-name-hint {
+      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #7a7a7a;
+      max-width: 100%;
     }
     .rsvp-name-input {
       width: 100%;
       border: none;
-      border-bottom: 1px solid #7c7367;
+      border-bottom: 3px solid #111;
+      border-radius: 0;
       background: transparent;
-      padding: 0.4rem 0.1rem 0.62rem;
-      font: inherit;
-      font-size: 1.07rem;
-      color: #1f1b15;
+      padding: 0.5rem 0.05rem 0.65rem;
+      margin: 0;
+      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
+      font-size: 0.94rem;
+      color: #111;
     }
     .rsvp-name-input::placeholder {
-      color: #918678;
+      color: #b0b0b0;
     }
     .rsvp-name-input:focus {
       outline: none;
-      border-bottom-color: #262118;
+      border-bottom-color: #000;
     }
     .rsvp-submit {
-      margin: 2rem auto 0;
+      margin: 2.25rem auto 0;
       display: block;
-      width: min(340px, 100%);
+      width: min(280px, 100%);
       border: none;
-      background: #1c1813;
-      color: #f4efe6;
-      font-weight: 700;
-      padding: 1rem 1.1rem;
+      background: #000;
+      color: #fff;
+      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
+      font-weight: 600;
+      padding: 0.88rem 1.75rem;
       cursor: pointer;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      font-size: 0.9rem;
-      transition: background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
-      box-shadow: 0 8px 18px #0000001a;
+      font-size: 0.72rem;
+      transition: background-color 160ms ease, opacity 160ms ease;
+      box-shadow: none;
     }
     .rsvp-submit:hover {
-      background: #12100d;
-      transform: translateY(-1px);
-      box-shadow: 0 11px 20px #00000021;
+      background: #333;
+      opacity: 1;
     }
     .rsvp-success {
-      margin: 0.9rem auto 0;
-      color: #2f5a3d;
+      margin: 1rem auto 0;
+      color: #2d6a45;
       text-align: center;
-      max-width: 760px;
-      font-weight: 600;
+      max-width: 26rem;
+      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
     }
     .rsvp-errors {
       margin: 0.25rem 0 0;
       color: #8a2920;
-      font-size: 0.9rem;
+      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
+      font-size: 0.82rem;
     }
     .footer-ornament {
       width: min(620px, 96vw);
@@ -493,21 +530,13 @@
     footer { text-align: center; padding: 2.2rem 1rem 3.2rem; color: var(--muted); }
 
     @media (max-width: 840px) {
-      .program-item { grid-template-columns: 90px 52px 1fr; }
+      .program-item { grid-template-columns: 6.5rem 76px minmax(0, 1fr); column-gap: 1rem; }
+      .program-icon-image { width: 76px; height: 76px; }
       .program-time { font-size: clamp(1.7rem, 7vw, 2.1rem); }
+      .program-time-slot { font-size: clamp(1.05rem, 3.2vw, 1.28rem); padding-top: 0.22rem; }
     }
     @media (max-width: 700px) {
       .countdown { grid-template-columns: repeat(2, minmax(80px, 1fr)); }
-      .palette { grid-template-columns: repeat(5, minmax(52px, 1fr)); }
-      .carousel-shell { padding: 0 40px; }
-      .carousel-side { width: 58px; border-radius: 12px; }
-      .carousel-arrow {
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
-      }
-      .carousel-arrow.prev { left: 6px; }
-      .carousel-arrow.next { right: 6px; }
       .location-media {
         grid-template-columns: 1fr;
         gap: 0.9rem;
@@ -532,14 +561,26 @@
       .hero-icon {
         margin-bottom: 0.55rem;
       }
-      .program-item { grid-template-columns: 1fr; gap: 0.6rem; text-align: center; justify-items: center; }
-      .program-time { text-align: center; }
+      .program-item {
+        grid-template-columns: 1fr;
+        gap: 0.55rem;
+        text-align: left;
+        justify-items: stretch;
+        max-width: 28rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .program-time { text-align: left; }
+      .program-icon-image { justify-self: start; }
       .program-text { max-width: 100%; }
-      .rsvp-wrap { padding: 1.15rem 0.95rem 1.25rem; }
-      .rsvp-label { font-size: 1.62rem; }
-      .rsvp-item label { font-size: 1.04rem; }
-      .rsvp-intro { font-size: 0.95rem; }
-      .rsvp-submit { width: 100%; }
+      .rsvp-section .rsvp-page-title {
+        margin-bottom: 1.75rem;
+        letter-spacing: 0.12em;
+      }
+      .rsvp-wrap { padding: 0 0.35rem 1.5rem; }
+      .rsvp-form { margin-top: 2rem; }
+      .rsvp-group { margin-bottom: 1.75rem; }
+      .rsvp-submit { width: 100%; max-width: none; }
     }
   </style>
 </head>
@@ -547,7 +588,6 @@
   <div class="lang-switcher" aria-label="Language switcher">
     <button class="lang-btn active" data-lang="ru" title="Русский">🇷🇺</button>
     <button class="lang-btn" data-lang="en" title="English">🇬🇧</button>
-    <button class="lang-btn" data-lang="ga" title="Gaeilge">🇮🇪</button>
   </div>
 
   <header class="hero">
@@ -571,30 +611,6 @@
     </section>
 
     <section class="reveal">
-      <div class="carousel-shell" data-carousel>
-        <div class="carousel-side prev"><img alt="Предыдущее фото"></div>
-        <div class="carousel-side next"><img alt="Следующее фото"></div>
-        <button class="carousel-arrow prev" type="button" aria-label="Предыдущее">&#10094;</button>
-        <div class="carousel-box">
-          <div class="carousel-track">
-            <figure class="carousel-slide"><img src="{% static 'core/img/carousel-01.png' %}" alt="Фото 1"></figure>
-            <figure class="carousel-slide"><img src="{% static 'core/img/carousel-02.png' %}" alt="Фото 2"></figure>
-            <figure class="carousel-slide"><img src="{% static 'core/img/carousel-03.png' %}" alt="Фото 3"></figure>
-            <figure class="carousel-slide"><img src="{% static 'core/img/carousel-04.png' %}" alt="Фото 4"></figure>
-            <figure class="carousel-slide"><img src="{% static 'core/img/carousel-05.png' %}" alt="Фото 5"></figure>
-            <figure class="carousel-slide"><img src="{% static 'core/img/carousel-06.png' %}" alt="Фото 6"></figure>
-            <figure class="carousel-slide"><img src="{% static 'core/img/carousel-07.png' %}" alt="Фото 7"></figure>
-            <figure class="carousel-slide"><img src="{% static 'core/img/carousel-08.png' %}" alt="Фото 8"></figure>
-            <figure class="carousel-slide"><img src="{% static 'core/img/carousel-09.png' %}" alt="Фото 9"></figure>
-            <figure class="carousel-slide"><img src="{% static 'core/img/carousel-10.png' %}" alt="Фото 10"></figure>
-          </div>
-        </div>
-        <button class="carousel-arrow next" type="button" aria-label="Следующее">&#10095;</button>
-        <div class="carousel-dots"></div>
-      </div>
-    </section>
-
-    <section class="reveal">
       <h2 data-i18n="countdownTitle">До свадьбы осталось</h2>
       <div class="countdown" data-target-date="2026-07-24T15:00:00+03:00">
         <div class="count-box"><span class="count-value" data-days>00</span><span class="count-label" data-i18n="daysLabel">дней</span></div>
@@ -610,30 +626,23 @@
         src="{% static 'core/img/program-top-ornament.png' %}"
         alt="Декоративный свадебный торт"
       >
-      <h2 data-i18n="timelineTitle">Программа дня</h2>
-      <div class="program">
-        <article class="program-item reveal">
-          <div class="program-time">15:00</div>
-          <img
-            class="program-icon-image"
-            src="{% static 'core/img/program-icon-1.png' %}"
-            alt="Сбор гостей"
-          >
-          <div>
-            <p class="program-title" data-i18n="timeline1Title">Сбор гостей | Фуршет</p>
-            <p class="program-text" data-i18n="timeline1Text">Просим взять с собой хорошее настроение и свои улыбки.</p>
-          </div>
-        </article>
+      <h2 data-i18n="timelineTitle">Программа свадьбы</h2>
+      <div class="program-day-block" role="region" aria-labelledby="program-day-1-heading">
+        <div class="program-day-header reveal">
+          <span class="program-day-index" aria-hidden="true">1</span>
+          <h3 class="program-day-title" id="program-day-1-heading" data-i18n="programDay1Title">Программа 1-го дня свадьбы</h3>
+        </div>
+        <div class="program">
         <article class="program-item reveal">
           <div class="program-time">16:00</div>
           <img
             class="program-icon-image"
-            src="{% static 'core/img/program-icon-2.png' %}"
-            alt="Свадебная церемония"
+            src="{% static 'core/img/program-icon-1.png' %}"
+            alt=""
           >
           <div>
-            <p class="program-title" data-i18n="timeline2Title">Свадебная церемония</p>
-            <p class="program-text" data-i18n="timeline2Text">На всякий случай приготовьте носовые платочки для трогательного момента.</p>
+            <p class="program-title" data-i18n="timeline1Title">Заселение в отель и Welcome-зона</p>
+            <p class="program-text" data-i18n="timeline1Text">Приглашаем вас заселиться в отель и присоединиться к welcome-зоне. Вас ждут лёгкие закуски, напитки и фотозона - настроимся на праздничный лад!</p>
           </div>
         </article>
         <article class="program-item reveal">
@@ -641,25 +650,117 @@
           <img
             class="program-icon-image"
             src="{% static 'core/img/program-icon-3.png' %}"
-            alt="Начало банкета"
+            alt=""
           >
           <div>
-            <p class="program-title" data-i18n="timeline3Title">Начало банкета</p>
-            <p class="program-text" data-i18n="timeline3Text">Время вкусной еды, танцев и развлечений.</p>
+            <p class="program-title" data-i18n="timeline2Title">Начало торжества 🍽️</p>
+            <p class="program-text" data-i18n="timeline2Text">Время вкусной еды, танцев и развлечений</p>
           </div>
         </article>
         <article class="program-item reveal">
-          <div class="program-time">23:00</div>
+          <div class="program-time">00:00</div>
           <img
             class="program-icon-image"
             src="{% static 'core/img/program-icon-4.png' %}"
-            alt="Just Married"
+            alt=""
           >
           <div>
-            <p class="program-title" data-i18n="timeline4Title">Завершение торжества</p>
-            <p class="program-text" data-i18n="timeline4Text">К сожалению, даже такой прекрасный вечер может закончиться.</p>
+            <p class="program-title" data-i18n="timeline3Title">Завершение первого дня торжества</p>
+            <p class="program-text" data-i18n="timeline3Text">Волшебный вечер подошёл к концу - пора отдыхать! Ждём всех завтра для продолжения праздника!</p>
           </div>
         </article>
+        </div>
+      </div>
+      <div class="program-day-block" role="region" aria-labelledby="program-day-2-heading">
+        <div class="program-day-header reveal">
+          <span class="program-day-index" aria-hidden="true">2</span>
+          <h3 class="program-day-title" id="program-day-2-heading" data-i18n="programDay2SectionTitle">Программа 2-го дня свадьбы - «Свободный день!»</h3>
+        </div>
+        <div class="program">
+        <article class="program-item reveal">
+          <div class="program-time program-time-slot" data-i18n="day2MorningSlot">Утро</div>
+          <img
+            class="program-icon-image"
+            src="{% static 'core/img/program-icon-1.png' %}"
+            alt=""
+          >
+          <div>
+            <div class="program-text" data-i18n="day2MorningBody">
+              <p><strong>Высыпаемся - отдыхаем в своё удовольствие!</strong></p>
+              <p>Завтрак (шведский стол) в основном корпусе</p>
+              <p>На второй день берем с собой вещи для активного отдыха (сменную лёгкую одежду, кроссовки, сланцы, купальники).</p>
+            </div>
+          </div>
+        </article>
+        <article class="program-item reveal">
+          <div class="program-time program-time-slot" data-i18n="day2DaySlot">День</div>
+          <img
+            class="program-icon-image"
+            src="{% static 'core/img/program-icon-2.png' %}"
+            alt=""
+          >
+          <div>
+            <div class="program-text" data-i18n="day2DayBody">
+              <p><strong>Шашлыки и купание на Истринском водохранилище</strong></p>
+              <p>Свободное время - расслабляемся, гуляем, общаемся, смеёмся.</p>
+              <p>Обед (шведский стол) в основном корпусе</p>
+            </div>
+          </div>
+        </article>
+        <article class="program-item reveal">
+          <div class="program-time program-time-slot" data-i18n="day2EveningSlot">Вечер</div>
+          <img
+            class="program-icon-image"
+            src="{% static 'core/img/program-icon-3.png' %}"
+            alt=""
+          >
+          <div>
+            <div class="program-text" data-i18n="day2EveningBody">
+              <p><strong>Дискотека в «клубе» базы отдыха</strong></p>
+              <p>Общение, обмен впечатлениями, весёлые моменты в кругу близких.</p>
+              <p>Ужин (шведский стол) в основном корпусе</p>
+            </div>
+          </div>
+        </article>
+        </div>
+        <p class="program-rule reveal" data-i18n="programDay2Rule">Главное правило дня - отдыхать, смеяться и наслаждаться каждым моментом!</p>
+      </div>
+      <div class="program-day-block" role="region" aria-labelledby="program-day-3-heading">
+        <div class="program-day-header reveal">
+          <span class="program-day-index" aria-hidden="true">3</span>
+          <h3 class="program-day-title" id="program-day-3-heading" data-i18n="programDay3SectionTitle">Программа 3‑го дня свадьбы</h3>
+        </div>
+        <div class="program">
+        <article class="program-item reveal">
+          <div class="program-time program-time-slot" data-i18n="day3MorningSlot">Утро</div>
+          <img
+            class="program-icon-image"
+            src="{% static 'core/img/program-icon-1.png' %}"
+            alt=""
+          >
+          <div>
+            <div class="program-text" data-i18n="day3MorningBody">
+              <p><strong>Спокойное пробуждение.</strong></p>
+              <p>Завтрак (шведский стол) в основном корпусе - последний совместный приём пищи на празднике.</p>
+            </div>
+          </div>
+        </article>
+        <article class="program-item reveal">
+          <div class="program-time program-time-slot" data-i18n="day3CheckoutSlot">До<br>13:00</div>
+          <img
+            class="program-icon-image"
+            src="{% static 'core/img/program-icon-4.png' %}"
+            alt=""
+          >
+          <div>
+            <div class="program-text" data-i18n="day3CheckoutBody">
+              <p><strong>Выселение из номеров.</strong></p>
+              <p>Разъезжаемся по домам - конец свадьбы и мини‑отпуска! ✨</p>
+              <p>Последние объятия!</p>
+            </div>
+          </div>
+        </article>
+        </div>
       </div>
       <img
         class="program-ornament reveal"
@@ -669,39 +770,27 @@
     </section>
 
     <section class="reveal">
-      <h2 data-i18n="dressTitle">Дресс-код</h2>
-      <p class="dress-description" data-i18n="dressText">Для нас главное - ваше присутствие! Но мы будем признательны, если вы придержитесь стиля нашей свадьбы и нашей цветовой палитры.</p>
-      <div class="palette">
-        <div class="swatch reveal"><div class="swatch-color" style="background:#7B9575;"></div><div class="swatch-code">#7B9575</div></div>
-        <div class="swatch reveal"><div class="swatch-color" style="background:#93A986;"></div><div class="swatch-code">#93A986</div></div>
-        <div class="swatch reveal"><div class="swatch-color" style="background:#B79A7A;"></div><div class="swatch-code">#B79A7A</div></div>
-        <div class="swatch reveal"><div class="swatch-color" style="background:#D8C8B4;"></div><div class="swatch-code">#D8C8B4</div></div>
-        <div class="swatch reveal"><div class="swatch-color" style="background:#D8D3C7;"></div><div class="swatch-code">#D8D3C7</div></div>
-      </div>
-    </section>
-
-    <section class="reveal">
       <h2 data-i18n="locationTitle">Локация</h2>
       <p class="location-copy" data-i18n="locationTextMain">
-        Наша свадьба пройдет на Красной площади.<br>
-        И сделаем красивые памятные фотографии рядом с историческими местами.
+        Наша свадьба пройдет на базе отдыха «Босиком» в Подмосковье на берегу Истринского водохранилища
       </p>
+      <p class="location-how" data-i18n="locationHowTitle">Как добраться?</p>
       <p class="location-copy" data-i18n="locationTextSub">
-        Ниже вы найдете карту, она поможет вам быстрее найти место торжества и добраться вовремя.
+        Мы подготовили для вас карту, чтобы вы точно добрались и порадовали нас своим присутствием.
       </p>
       <div class="location-media">
         <div class="location-photo-wrap reveal">
           <img
             class="location-photo"
-            src="{% static 'core/img/location-red-square.png' %}"
-            alt="Red Square"
+            src="{% static 'core/img/location-outside.png' %}"
+            alt="База отдыха Босиком, Подмосковье"
           >
         </div>
         <div class="location-map-wrap reveal">
           <iframe
             class="location-map"
-            src="https://yandex.com/map-widget/v1/?ll=37.620795%2C55.753930&mode=search&pt=37.620795,55.753930,pm2rdm&text=%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%B0%D1%8F%20%D0%BF%D0%BB%D0%BE%D1%89%D0%B0%D0%B4%D1%8C&z=16"
-            title="Yandex map Red Square"
+            src="https://yandex.com/map-widget/v1/?ll=36.817712%2C56.008247&mode=search&pt=36.817712,56.008247,pm2rdm&text=%D0%91%D0%B0%D0%B7%D0%B0%20%D0%BE%D1%82%D0%B4%D1%8B%D1%85%D0%B0%20%D0%91%D0%BE%D1%81%D0%B8%D0%BA%D0%BE%D0%BC&z=14"
+            title="Карта: база отдыха Босиком"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
@@ -709,8 +798,8 @@
       </div>
     </section>
 
-    <section class="reveal">
-      <h2 data-i18n="rsvpTitle">Присутствие на торжестве</h2>
+    <section id="rsvp" class="rsvp-section reveal">
+      <h2 class="rsvp-page-title" data-i18n="rsvpTitle">Присутствие на торжестве</h2>
       <div class="rsvp-wrap">
         <p class="rsvp-intro" data-i18n="rsvpIntro1">Ваши ответы на вопросы очень помогут нам при организации торжества.</p>
         <p class="rsvp-intro" data-i18n="rsvpIntro2">Будем ждать ответ до 24.07.2026 г.</p>
@@ -748,16 +837,22 @@
             {% endif %}
           </div>
 
-          <div class="rsvp-group">
-            <p class="rsvp-label" data-i18n="nameTitle">Имя Фамилия</p>
-            <p class="rsvp-help" data-i18n="nameHelp">если вы будете парой или семьей, то внесите все имена и фамилии</p>
-            <input
-              class="rsvp-name-input"
-              type="text"
-              name="full_name"
-              value="{{ full_name_value }}"
-              required
-            >
+          <div class="rsvp-group rsvp-group-name">
+            <div class="rsvp-name-block">
+              <label class="rsvp-name-label" for="rsvp-full-name">
+                <span class="rsvp-name-title" data-i18n="nameTitle">Имя Фамилия</span>
+                <span class="rsvp-name-hint" data-i18n="nameHelp">если вы будете парой или семьей, то внесите все имена и фамилии</span>
+              </label>
+              <input
+                id="rsvp-full-name"
+                class="rsvp-name-input"
+                type="text"
+                name="full_name"
+                value="{{ full_name_value }}"
+                required
+                autocomplete="name"
+              >
+            </div>
             {% if rsvp_form.errors.full_name %}
               <p class="rsvp-errors">{{ rsvp_form.errors.full_name.0 }}</p>
             {% endif %}
@@ -824,63 +919,6 @@
   </footer>
 
   <script>
-    (function () {
-      var root = document.querySelector("[data-carousel]");
-      if (!root) return;
-
-      var track = root.querySelector(".carousel-track");
-      var slides = Array.prototype.slice.call(root.querySelectorAll(".carousel-slide")).slice(0, 10);
-      var prev = root.querySelector(".carousel-arrow.prev");
-      var next = root.querySelector(".carousel-arrow.next");
-      var dotsHost = root.querySelector(".carousel-dots");
-      var sidePrevWrap = root.querySelector(".carousel-side.prev");
-      var sideNextWrap = root.querySelector(".carousel-side.next");
-      var sidePrev = sidePrevWrap ? sidePrevWrap.querySelector("img") : null;
-      var sideNext = sideNextWrap ? sideNextWrap.querySelector("img") : null;
-      var index = 0;
-      var previewAnimTimer = null;
-
-      slides.forEach(function (_, i) {
-        var dot = document.createElement("button");
-        dot.type = "button";
-        dot.className = "carousel-dot" + (i === 0 ? " active" : "");
-        dot.addEventListener("click", function () {
-          index = i;
-          render();
-        });
-        dotsHost.appendChild(dot);
-      });
-      var dots = Array.prototype.slice.call(dotsHost.querySelectorAll(".carousel-dot"));
-
-      function render() {
-        track.style.transform = "translateX(-" + (index * 100) + "%)";
-        dots.forEach(function (dot, i) { dot.classList.toggle("active", i === index); });
-        if (slides.length > 1 && sidePrev && sideNext) {
-          var prevIndex = (index - 1 + slides.length) % slides.length;
-          var nextIndex = (index + 1) % slides.length;
-          var prevImg = slides[prevIndex].querySelector("img");
-          var nextImg = slides[nextIndex].querySelector("img");
-          if (sidePrevWrap) sidePrevWrap.classList.add("is-updating");
-          if (sideNextWrap) sideNextWrap.classList.add("is-updating");
-          if (previewAnimTimer) window.clearTimeout(previewAnimTimer);
-          sidePrev.src = prevImg ? prevImg.src : "";
-          sideNext.src = nextImg ? nextImg.src : "";
-          previewAnimTimer = window.setTimeout(function () {
-            if (sidePrevWrap) sidePrevWrap.classList.remove("is-updating");
-            if (sideNextWrap) sideNextWrap.classList.remove("is-updating");
-          }, 230);
-        }
-      }
-      function go(step) {
-        index = (index + step + slides.length) % slides.length;
-        render();
-      }
-
-      prev.addEventListener("click", function () { go(-1); });
-      next.addEventListener("click", function () { go(1); });
-      render();
-    })();
-
     (function () {
       var items = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
       if (!items.length) return;
@@ -957,20 +995,31 @@
           hoursLabel: "часов",
           minutesLabel: "минут",
           secondsLabel: "секунд",
-          timelineTitle: "Программа дня",
-          timeline1Title: "Сбор гостей | Фуршет",
-          timeline1Text: "Просим взять с собой хорошее настроение и свои улыбки.",
-          timeline2Title: "Свадебная церемония",
-          timeline2Text: "На всякий случай приготовьте носовые платочки для трогательного момента.",
-          timeline3Title: "Начало банкета",
-          timeline3Text: "Время вкусной еды, танцев и развлечений.",
-          timeline4Title: "Завершение торжества",
-          timeline4Text: "К сожалению, даже такой прекрасный вечер может закончиться.",
-          dressTitle: "Дресс-код",
-          dressText: "Для нас главное - ваше присутствие! Но мы будем признательны, если вы придержитесь стиля нашей свадьбы и нашей цветовой палитры.",
+          timelineTitle: "Программа свадьбы",
+          programDay1Title: "Программа 1-го дня свадьбы",
+          timeline1Title: "Заселение в отель и Welcome-зона",
+          timeline1Text: "Приглашаем вас заселиться в отель и присоединиться к welcome-зоне. Вас ждут лёгкие закуски, напитки и фотозона - настроимся на праздничный лад!",
+          timeline2Title: "Начало торжества 🍽️",
+          timeline2Text: "Время вкусной еды, танцев и развлечений",
+          timeline3Title: "Завершение первого дня торжества",
+          timeline3Text: "Волшебный вечер подошёл к концу - пора отдыхать! Ждём всех завтра для продолжения праздника!",
+          programDay2SectionTitle: "Программа 2-го дня свадьбы - «Свободный день!»",
+          day2MorningSlot: "Утро",
+          day2MorningBody: "<p><strong>Высыпаемся - отдыхаем в своё удовольствие!</strong></p><p>Завтрак (шведский стол) в основном корпусе</p><p>На второй день берем с собой вещи для активного отдыха (сменную лёгкую одежду, кроссовки, сланцы, купальники).</p>",
+          day2DaySlot: "День",
+          day2DayBody: "<p><strong>Шашлыки и купание на Истринском водохранилище</strong></p><p>Свободное время - расслабляемся, гуляем, общаемся, смеёмся.</p><p>Обед (шведский стол) в основном корпусе</p>",
+          day2EveningSlot: "Вечер",
+          day2EveningBody: "<p><strong>Дискотека в «клубе» базы отдыха</strong></p><p>Общение, обмен впечатлениями, весёлые моменты в кругу близких.</p><p>Ужин (шведский стол) в основном корпусе</p>",
+          programDay2Rule: "Главное правило дня - отдыхать, смеяться и наслаждаться каждым моментом!",
+          programDay3SectionTitle: "Программа 3‑го дня свадьбы",
+          day3MorningSlot: "Утро",
+          day3MorningBody: "<p><strong>Спокойное пробуждение.</strong></p><p>Завтрак (шведский стол) в основном корпусе - последний совместный приём пищи на празднике.</p>",
+          day3CheckoutSlot: "До<br>13:00",
+          day3CheckoutBody: "<p><strong>Выселение из номеров.</strong></p><p>Разъезжаемся по домам - конец свадьбы и мини‑отпуска! ✨</p><p>Последние объятия!</p>",
           locationTitle: "Локация",
-          locationTextMain: "Наша свадьба пройдет на Красной площади.<br>И сделаем красивые памятные фотографии рядом с историческими местами.",
-          locationTextSub: "Ниже вы найдете карту, она поможет вам быстрее найти место торжества и добраться вовремя.",
+          locationTextMain: "Наша свадьба пройдет на базе отдыха «Босиком» в Подмосковье на берегу Истринского водохранилища",
+          locationHowTitle: "Как добраться?",
+          locationTextSub: "Мы подготовили для вас карту, чтобы вы точно добрались и порадовали нас своим присутствием.",
           rsvpTitle: "Присутствие на торжестве",
           rsvpIntro1: "Ваши ответы на вопросы очень помогут нам при организации торжества.",
           rsvpIntro2: "Будем ждать ответ до 24.07.2026 г.",
@@ -1004,20 +1053,31 @@
           hoursLabel: "hours",
           minutesLabel: "minutes",
           secondsLabel: "seconds",
-          timelineTitle: "Wedding Day Program",
-          timeline1Title: "Guest gathering | Welcome drinks",
-          timeline1Text: "Please bring your best mood and your smiles.",
-          timeline2Title: "Wedding ceremony",
-          timeline2Text: "You may want tissues ready for this emotional moment.",
-          timeline3Title: "Reception begins",
-          timeline3Text: "Time for delicious food, dancing and fun.",
-          timeline4Title: "End of celebration",
-          timeline4Text: "Unfortunately, even such a beautiful evening must come to an end.",
-          dressTitle: "Dress Code",
-          dressText: "Your presence is the most important thing for us. We would be grateful if you could follow the wedding style and color palette.",
+          timelineTitle: "Wedding weekend program",
+          programDay1Title: "Day 1 - wedding program",
+          timeline1Title: "Hotel check-in & welcome zone",
+          timeline1Text: "Please check in and join the welcome zone. Light snacks, drinks and a photo corner await - let’s get into the festive mood!",
+          timeline2Title: "Celebration begins 🍽️",
+          timeline2Text: "Delicious food, dancing and entertainment",
+          timeline3Title: "End of day one",
+          timeline3Text: "The magical evening is over - time to rest! We’ll see everyone tomorrow to continue the celebration!",
+          programDay2SectionTitle: "Day 2 - “Free day!” wedding program",
+          day2MorningSlot: "Morning",
+          day2MorningBody: "<p><strong>Sleep in and relax at your own pace</strong></p><p>Breakfast (buffet) in the main building</p><p>Bring clothes for active leisure: light change of clothes, trainers, sandals, swimwear</p>",
+          day2DaySlot: "Day",
+          day2DayBody: "<p><strong>Barbecue and swimming at Istra Reservoir</strong></p><p>Free time - unwind, walk, chat and laugh</p><p>Lunch (buffet) in the main building</p>",
+          day2EveningSlot: "Evening",
+          day2EveningBody: "<p><strong>Disco at the resort “club”</strong></p><p>Catching up, sharing impressions, fun moments with loved ones</p><p>Dinner (buffet) in the main building</p>",
+          programDay2Rule: "The golden rule of the day: rest, laugh and enjoy every moment!",
+          programDay3SectionTitle: "Day 3 - wedding program",
+          day3MorningSlot: "Morning",
+          day3MorningBody: "<p><strong>A gentle start to the day.</strong></p><p>Breakfast (buffet) in the main building - our last shared meal of the celebration.</p>",
+          day3CheckoutSlot: "By<br>13:00",
+          day3CheckoutBody: "<p><strong>Check-out from rooms.</strong></p><p>We head home - the end of the wedding and our mini getaway! ✨</p><p>Final hugs!</p>",
           locationTitle: "Location",
-          locationTextMain: "Our wedding will take place at Red Square.<br>And we will take beautiful keepsake photos near historic landmarks.",
-          locationTextSub: "Below you will find a map that will help you quickly find the venue and arrive on time.",
+          locationTextMain: "Our wedding will be held at the “Bosikom” resort in the Moscow region on the shore of the Istra Reservoir",
+          locationHowTitle: "How to get there",
+          locationTextSub: "We’ve prepared a map so you can find your way easily and delight us with your presence.",
           rsvpTitle: "Attendance Confirmation",
           rsvpIntro1: "Your answers to these questions will help us a lot with organizing the celebration.",
           rsvpIntro2: "We kindly ask for your response by 24.07.2026.",
@@ -1039,53 +1099,6 @@
           submitBtn: "Submit",
           footerText: "We will be happy to see you! ❤",
           submitAlert: "Thank you! Your response has been received."
-        },
-        ga: {
-          pageTitle: "Nikita agus Anastasia",
-          heroNames: "Nikita agus Anastasia",
-          heroDate: "24 Iuil 2026",
-          inviteTitle: "A Aíonna Ionúine",
-          inviteText: "Beimid an-sásta an lá speisialta seo - lá ár bpósta - a roinnt libh. Tugaimid cuireadh ó chroí daoibh bheith linn agus ár gceiliúradh a mhaisiú le bhur láithreacht.",
-          countdownTitle: "Am Fágtha Go dtí an Bainis",
-          daysLabel: "laethanta",
-          hoursLabel: "uaire",
-          minutesLabel: "nóiméad",
-          secondsLabel: "soicind",
-          timelineTitle: "Clár an Lae",
-          timeline1Title: "Bailiú na n-aíonna | Fáilte",
-          timeline1Text: "Tabhair giúmar maith agus miongháire leat le do thoil.",
-          timeline2Title: "Searmanas bainise",
-          timeline2Text: "B'fhéidir go mbeidh ciarsúr uait don nóiméad mothúchánach seo.",
-          timeline3Title: "Tús an chóisir",
-          timeline3Text: "Am do bhia blasta, damhsa agus spraoi.",
-          timeline4Title: "Deireadh na féile",
-          timeline4Text: "Ar an drochuair, tagann deireadh fiú leis an oíche is áille.",
-          dressTitle: "Cód Gúna",
-          dressText: "Is é bhur láithreacht an rud is tábhachtaí dúinn. Bheimis buíoch dá leanfadh sibh stíl agus pailéad dathanna na bainise.",
-          locationTitle: "Suíomh",
-          locationTextMain: "Beidh ár mbainis ar siúl ag Cearnóg Dhearg.<br>Agus tógfaimid grianghraif áille cuimhneacha in aice le háiteanna stairiúla.",
-          locationTextSub: "Anseo thíos gheobhaidh tú léarscáil a chabhróidh leat an áit a aimsiú níos tapa agus teacht in am.",
-          rsvpTitle: "Freastal ar an gCeiliúradh",
-          rsvpIntro1: "Cabhróidh do fhreagraí go mór linn agus an ceiliúradh á eagrú againn.",
-          rsvpIntro2: "Bheimis buíoch as do fhreagra faoin 24.07.2026.",
-          rsvpSuccessText: "Go raibh maith agat! Sábháladh do fhreagra.",
-          attendanceQuestion: "An mbeidh tú in ann freastal ar an gceiliúradh?",
-          attendanceComing: "Beidh mé ann / Beidh muid ann",
-          attendanceNotComing: "Ní bheidh mé in ann teacht",
-          attendancePlusOne: "Tiocfaidh mé +1",
-          nameTitle: "Ainm Sloinne",
-          nameHelp: "má tá tú ag teacht mar lánúin nó mar theaghlach, cuir isteach gach ainm agus sloinne",
-          drinksTitle: "Roghanna deochanna:",
-          drinksHelp: "is féidir leat roinnt roghanna a roghnú",
-          drinkRedWine: "Fíon dearg",
-          drinkWhiteWine: "Fíon bán",
-          drinkWhisky: "Uisce beatha",
-          drinkVodka: "Vodca",
-          drinkChampagne: "Seaimpín",
-          drinkSoft: "Rud éigin neamh-mheisciúil",
-          submitBtn: "Seol",
-          footerText: "Beimid an-sásta sibh a fheiceáil! ❤",
-          submitAlert: "Go raibh maith agat! Fuarthas do fhreagra."
         }
       };
 
