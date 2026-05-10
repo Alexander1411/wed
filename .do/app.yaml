@@ -1,0 +1,42 @@
+name: wedding
+region: ams
+services:
+  - name: web
+    github:
+      repo: Alexander1411/wed
+      branch: main
+      deploy_on_push: true
+    source_dir: /
+    build_command: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    run_command: python manage.py migrate --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:8080 --workers 2
+    http_port: 8080
+    instance_size_slug: basic-xxs
+    instance_count: 1
+    routes:
+      - path: /
+    health_check:
+      http_path: /
+    envs:
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: "nikitalovesanastasia.com,www.nikitalovesanastasia.com,${APP_DOMAIN}"
+      - key: DJANGO_CSRF_TRUSTED_ORIGINS
+        value: "https://nikitalovesanastasia.com,https://www.nikitalovesanastasia.com,https://${APP_DOMAIN}"
+      - key: DJANGO_SECRET_KEY
+        type: SECRET
+        value: "REPLACE_WITH_RANDOM_LONG_STRING"
+      - key: DATABASE_URL
+        value: "${db.DATABASE_URL}"
+
+databases:
+  - name: db
+    engine: PG
+    production: false
+    cluster_name: wedding-db
+
+domains:
+  - domain: nikitalovesanastasia.com
+    type: PRIMARY
+  - domain: www.nikitalovesanastasia.com
+    type: ALIAS
