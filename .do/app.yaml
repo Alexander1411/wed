@@ -20,9 +20,9 @@ services:
       - key: DJANGO_DEBUG
         value: "False"
       - key: DJANGO_ALLOWED_HOSTS
-        value: "nikitalovesanastasia.com,www.nikitalovesanastasia.com,${APP_DOMAIN}"
+        value: "nikita-anastasia.com,www.nikita-anastasia.com,${APP_DOMAIN}"
       - key: DJANGO_CSRF_TRUSTED_ORIGINS
-        value: "https://nikitalovesanastasia.com,https://www.nikitalovesanastasia.com,https://${APP_DOMAIN}"
+        value: "https://nikita-anastasia.com,https://www.nikita-anastasia.com,https://${APP_DOMAIN}"
       - key: DJANGO_SECRET_KEY
         type: SECRET
         value: "REPLACE_WITH_RANDOM_LONG_STRING"
@@ -36,7 +36,7 @@ databases:
     cluster_name: wedding-db
 
 domains:
-  - domain: nikitalovesanastasia.com
+  - domain: nikita-anastasia.com
     type: PRIMARY
-  - domain: www.nikitalovesanastasia.com
+  - domain: www.nikita-anastasia.com
     type: ALIAS

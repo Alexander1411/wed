@@ -81,7 +81,7 @@
     }
     .scroll-mark { display: inline-block; margin-top: 1.4rem; color: #8a8a8a; text-decoration: none; font-size: 1.2rem; }
 
-    section { padding: 2.4rem 0; }
+    section { padding: 2.85rem 0; }
     .reveal {
       opacity: 0;
       transform: translateY(28px);
@@ -97,33 +97,136 @@
       transition-duration: 620ms;
     }
     h2 {
-      margin: 0 0 1.2rem; text-align: center; font-family: "Cormorant Garamond", serif;
-      letter-spacing: 0.09em; text-transform: uppercase; font-size: clamp(2.1rem, 4vw, 3.45rem); font-weight: 600;
+      margin: 0 0 1.65rem;
+      text-align: center;
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      font-size: clamp(2.25rem, 4.2vw, 3.55rem);
+      font-weight: 600;
+      line-height: 1.18;
     }
-    .lead { margin: 0 auto; color: #2f2f2f; max-width: 760px; text-align: center; font-size: clamp(1rem, 2.3vw, 1.06rem); }
+    .lead {
+      margin: 0 auto;
+      color: #2f2f2f;
+      max-width: 760px;
+      text-align: center;
+      font-size: clamp(1.02rem, 2.3vw, 1.1rem);
+      line-height: 1.75;
+    }
 
-    .countdown {
-      margin: 1rem auto 0; width: min(640px, 100%); display: grid; grid-template-columns: repeat(4, minmax(64px, 1fr)); gap: 0.8rem; text-align: center;
+    .countdown-section {
+      text-align: center;
     }
-    .count-box { border: 1px solid #d8cfbf; padding: 0.9rem 0.35rem; background: #fffdf8cf; }
-    .count-value { display: block; font-size: clamp(1.3rem, 4vw, 2rem); font-weight: 700; line-height: 1.2; }
-    .count-label { color: var(--muted); font-size: 0.86rem; }
+    .countdown-heading {
+      margin-bottom: 0.35rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+    }
+    .countdown-heading::after {
+      content: "";
+      display: block;
+      width: 3rem;
+      height: 1px;
+      margin: 0.85rem auto 0;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.55;
+    }
+    .countdown-flourish {
+      margin: 0.35rem 0 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      opacity: 0.72;
+      line-height: 1;
+    }
+    .countdown-plate {
+      max-width: min(700px, 100%);
+      margin: 1.35rem auto 0;
+      padding: clamp(1.45rem, 3.2vw, 2.1rem) clamp(0.25rem, 1.5vw, 1rem);
+      background: rgba(255, 253, 249, 0.72);
+      border: 1px solid var(--line);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    .countdown {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 640px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      text-align: center;
+      padding: 0;
+      align-items: stretch;
+    }
+    .count-box {
+      position: relative;
+      padding: 0.5rem 0.4rem 0.65rem;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .count-box:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 12%;
+      bottom: 12%;
+      right: 0;
+      width: 1px;
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(193, 184, 168, 0.55) 18%,
+        rgba(193, 184, 168, 0.55) 82%,
+        transparent 100%
+      );
+    }
+    .count-value {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.05rem, 5.5vw, 3.05rem);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.06em;
+      font-variant-numeric: lining-nums tabular-nums;
+      color: #2a231c;
+    }
+    .count-label {
+      display: block;
+      margin-top: 0.55rem;
+      padding-top: 0.42rem;
+      border-top: 1px solid rgba(207, 199, 184, 0.55);
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--gold);
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(0.68rem, 1.6vw, 0.78rem);
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
 
     .program {
       width: min(860px, 100%);
       margin: 0 auto;
       display: grid;
-      gap: 1.8rem;
-      padding: 0.6rem 0;
+      gap: 2.35rem;
+      padding: 0.85rem 0 1rem;
     }
     .program-item {
       display: grid;
       /* Fixed tracks so every row shares the same column axis (icons line up). */
-      grid-template-columns: 7.35rem 84px minmax(0, 1fr);
+      grid-template-columns: 8.15rem 84px minmax(0, 1fr);
       align-items: start;
-      column-gap: 1.15rem;
-      row-gap: 0.4rem;
-      padding: 0.35rem 0;
+      column-gap: 1.25rem;
+      row-gap: 0.55rem;
+      padding: 0.55rem 0;
     }
     .program-item > div:last-child {
       min-width: 0;
@@ -131,12 +234,21 @@
     }
     .program-time {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1;
+      font-size: clamp(1.65rem, 3.5vw, 2.45rem);
+      font-weight: 600;
+      line-height: 1.15;
       text-align: right;
       justify-self: stretch;
-      padding-top: 0.15rem;
+      align-self: start;
+      padding: 0.15rem 0 0.65rem;
       box-sizing: border-box;
+      border: none;
+      border-radius: 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      box-shadow: none;
+      color: var(--gold);
+      letter-spacing: 0.03em;
     }
     .program-icon {
       width: 42px;
@@ -154,45 +266,52 @@
       width: 84px;
       height: 84px;
       border: none;
+      border-radius: 0;
       background: transparent;
+      padding: 0;
+      box-sizing: border-box;
       object-fit: contain;
-      opacity: 0.8;
+      opacity: 0.82;
       mix-blend-mode: multiply;
       justify-self: center;
       align-self: start;
       display: block;
+      box-shadow: none;
     }
     .program-title {
       margin: 0;
-      font-size: clamp(1.08rem, 2vw, 1.42rem);
-      font-weight: 500;
+      font-size: clamp(1.22rem, 2.2vw, 1.58rem);
+      font-weight: 600;
       font-family: "Cormorant Garamond", serif;
       letter-spacing: 0.02em;
+      line-height: 1.28;
       color: #3a342c;
     }
     .program-text {
       margin: 0;
       color: #4d4740;
-      font-size: clamp(0.96rem, 2.1vw, 1.05rem);
+      font-size: clamp(0.94rem, 2vw, 1.02rem);
       max-width: 620px;
+      line-height: 1.68;
     }
     .program-item > div > .program-title + .program-text {
-      margin-top: 0.42rem;
+      margin-top: 0.78rem;
     }
     .program-item > div > .program-text:first-child {
       margin-top: 0;
     }
     .program-text p {
-      margin: 0.48rem 0 0;
-      line-height: 1.58;
+      margin: 0.65rem 0 0;
+      line-height: 1.68;
     }
     /* Lead line: slightly larger than body, medium weight - not a second headline */
     .program-text p:first-child {
       margin-top: 0;
+      margin-bottom: 0.15rem;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.05rem, 1.9vw, 1.3rem);
+      font-size: clamp(1.12rem, 2vw, 1.38rem);
       font-weight: 500;
-      line-height: 1.38;
+      line-height: 1.45;
       letter-spacing: 0.02em;
       color: #3a342c;
     }
@@ -200,54 +319,71 @@
       font-weight: 500;
     }
     .program-time-slot {
-      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
-      line-height: 1.12;
-      letter-spacing: 0.05em;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(0.98rem, 2vw, 1.18rem);
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      padding-top: 0.28rem;
+      padding: 0.2rem 0 0.65rem;
+      text-align: right;
+      border: none;
+      border-radius: 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      box-shadow: none;
+      color: var(--gold);
     }
     .program-day-block {
       margin: 0 auto;
       max-width: min(860px, 100%);
     }
     .program-day-block + .program-day-block {
-      margin-top: 2.5rem;
-      padding-top: 2.35rem;
+      margin-top: 2.85rem;
+      padding-top: 2.65rem;
       border-top: 1px solid rgba(111, 98, 80, 0.22);
     }
     .program-day-header {
       text-align: center;
-      margin: 0 auto 1.05rem;
+      margin: 0 auto 1.55rem;
       max-width: 40rem;
     }
     .program-day-index {
-      display: block;
+      display: inline-grid;
+      place-items: center;
+      width: clamp(2.85rem, 10vw, 3.5rem);
+      height: clamp(2.85rem, 10vw, 3.5rem);
+      margin: 0 auto 0.85rem;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.5rem, 7vw, 3.4rem);
+      font-size: clamp(1.45rem, 4.5vw, 1.85rem);
       font-weight: 600;
       line-height: 1;
-      letter-spacing: 0.12em;
-      color: #6f6250;
-      margin-bottom: 0.4rem;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: #fffdf9;
+      box-shadow: none;
     }
     .program-day-title {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.28rem, 2.6vw, 1.72rem);
+      font-size: clamp(1.38rem, 2.75vw, 1.88rem);
       font-weight: 600;
       text-align: center;
       letter-spacing: 0.045em;
+      line-height: 1.3;
       margin: 0;
       color: #2f2922;
     }
     .program-rule {
       max-width: 700px;
-      margin: 1.4rem auto 0;
+      margin: 1.95rem auto 0;
       text-align: center;
       font-style: italic;
       color: #534b42;
       font-size: clamp(0.96rem, 1.9vw, 1.04rem);
-      line-height: 1.55;
-      padding: 0 0.5rem;
+      line-height: 1.68;
+      padding: 0 0.75rem;
     }
     .program-day-block .program-rule {
       margin-bottom: 0.75rem;
@@ -264,7 +400,7 @@
     }
     .program-top-ornament {
       width: min(380px, 80vw);
-      margin: 0.2rem auto 0.9rem;
+      margin: 0.2rem auto 1.15rem;
       display: block;
       opacity: 0.65;
       mix-blend-mode: multiply;
@@ -278,10 +414,11 @@
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(1.15rem, 2.2vw, 1.45rem);
       font-weight: 600;
-      margin: 1.25rem auto 0.45rem;
+      margin: 1.5rem auto 0.65rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: #222;
+      line-height: 1.35;
     }
     .location-photo {
       width: 100%;
@@ -293,8 +430,9 @@
     .location-copy {
       text-align: center;
       max-width: 760px;
-      margin: 0 auto 1rem;
+      margin: 0 auto 1.15rem;
       color: #333;
+      line-height: 1.72;
     }
     .location-media {
       width: min(980px, 100%);
@@ -327,182 +465,6 @@
       display: block;
     }
 
-    /* RSVP: editorial title + geometric sans body (reference layout) */
-    .rsvp-section .rsvp-page-title {
-      margin: 0 auto 2.25rem;
-      max-width: 22rem;
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 500;
-      font-size: clamp(1.65rem, 3.8vw, 2.45rem);
-      letter-spacing: 0.16em;
-      line-height: 1.2;
-      text-transform: uppercase;
-      text-align: center;
-      color: #111;
-    }
-    .rsvp-wrap {
-      max-width: 520px;
-      margin: 0 auto;
-      background: transparent;
-      border: none;
-      padding: 0 clamp(0.5rem, 3vw, 1rem) 2rem;
-      box-shadow: none;
-    }
-    .rsvp-intro {
-      text-align: center;
-      color: #6f6f6f;
-      margin: 0 auto;
-      max-width: 26rem;
-      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
-      font-size: clamp(0.82rem, 1.35vw, 0.92rem);
-      font-weight: 400;
-      line-height: 1.65;
-    }
-    .rsvp-intro + .rsvp-intro {
-      margin-top: 0.35rem;
-    }
-    .rsvp-form {
-      margin: 2.5rem auto 0;
-      max-width: 100%;
-      text-align: left;
-    }
-    .rsvp-group {
-      margin-bottom: 2.1rem;
-    }
-    .rsvp-label {
-      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
-      font-size: clamp(0.88rem, 1.5vw, 0.98rem);
-      letter-spacing: 0.04em;
-      font-weight: 600;
-      line-height: 1.45;
-      margin: 0 0 0.55rem;
-      color: #111;
-      text-align: left;
-    }
-    .rsvp-help {
-      margin: 0 0 0.65rem;
-      color: #7a7a7a;
-      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
-      font-size: 0.8rem;
-      font-weight: 400;
-      line-height: 1.55;
-    }
-    .rsvp-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 0.62rem;
-    }
-    .rsvp-item label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.65rem;
-      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
-      font-size: 0.92rem;
-      font-weight: 400;
-      cursor: pointer;
-      color: #222;
-      line-height: 1.45;
-    }
-    .rsvp-item input[type="radio"],
-    .rsvp-item input[type="checkbox"] {
-      width: 17px;
-      height: 17px;
-      accent-color: #111;
-      transform: translateY(-1px);
-    }
-    .rsvp-divider {
-      border: 0;
-      border-top: 1px solid #d8d8d8;
-      margin: 2.1rem 0 2rem;
-    }
-    .rsvp-group-name {
-      margin-bottom: 2.1rem;
-    }
-    .rsvp-name-block {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .rsvp-name-label {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      margin-bottom: 0.5rem;
-      cursor: text;
-    }
-    .rsvp-name-title {
-      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
-      font-size: clamp(0.88rem, 1.5vw, 0.98rem);
-      letter-spacing: 0.04em;
-      font-weight: 600;
-      line-height: 1.35;
-      color: #111;
-    }
-    .rsvp-name-hint {
-      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
-      font-size: 0.78rem;
-      font-weight: 400;
-      line-height: 1.5;
-      color: #7a7a7a;
-      max-width: 100%;
-    }
-    .rsvp-name-input {
-      width: 100%;
-      border: none;
-      border-bottom: 3px solid #111;
-      border-radius: 0;
-      background: transparent;
-      padding: 0.5rem 0.05rem 0.65rem;
-      margin: 0;
-      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
-      font-size: 0.94rem;
-      color: #111;
-    }
-    .rsvp-name-input::placeholder {
-      color: #b0b0b0;
-    }
-    .rsvp-name-input:focus {
-      outline: none;
-      border-bottom-color: #000;
-    }
-    .rsvp-submit {
-      margin: 2.25rem auto 0;
-      display: block;
-      width: min(280px, 100%);
-      border: none;
-      background: #000;
-      color: #fff;
-      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
-      font-weight: 600;
-      padding: 0.88rem 1.75rem;
-      cursor: pointer;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      font-size: 0.72rem;
-      transition: background-color 160ms ease, opacity 160ms ease;
-      box-shadow: none;
-    }
-    .rsvp-submit:hover {
-      background: #333;
-      opacity: 1;
-    }
-    .rsvp-success {
-      margin: 1rem auto 0;
-      color: #2d6a45;
-      text-align: center;
-      max-width: 26rem;
-      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
-    .rsvp-errors {
-      margin: 0.25rem 0 0;
-      color: #8a2920;
-      font-family: "Montserrat", "Open Sans", Arial, sans-serif;
-      font-size: 0.82rem;
-    }
     .footer-ornament {
       width: min(620px, 96vw);
       margin: 1rem auto 0;
@@ -530,13 +492,31 @@
     footer { text-align: center; padding: 2.2rem 1rem 3.2rem; color: var(--muted); }
 
     @media (max-width: 840px) {
-      .program-item { grid-template-columns: 6.5rem 76px minmax(0, 1fr); column-gap: 1rem; }
+      .program-item { grid-template-columns: 7.15rem 76px minmax(0, 1fr); column-gap: 1rem; }
       .program-icon-image { width: 76px; height: 76px; }
-      .program-time { font-size: clamp(1.7rem, 7vw, 2.1rem); }
-      .program-time-slot { font-size: clamp(1.05rem, 3.2vw, 1.28rem); padding-top: 0.22rem; }
+      .program-time { font-size: clamp(1.45rem, 6vw, 1.9rem); padding: 0.15rem 0 0.48rem; }
+      .program-time-slot { font-size: clamp(0.88rem, 2.8vw, 1.05rem); padding: 0.2rem 0 0.48rem; }
     }
     @media (max-width: 700px) {
-      .countdown { grid-template-columns: repeat(2, minmax(80px, 1fr)); }
+      .countdown-plate {
+        padding: 1.2rem 0.65rem 1.35rem;
+      }
+      .countdown {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.55rem 0.5rem;
+      }
+      .count-box:not(:last-child)::after {
+        display: none;
+      }
+      .count-value {
+        font-size: clamp(1.75rem, 10vw, 2.5rem);
+      }
+      .count-label {
+        max-width: none;
+        margin-top: 0.42rem;
+        padding-top: 0.32rem;
+        letter-spacing: 0.14em;
+      }
       .location-media {
         grid-template-columns: 1fr;
         gap: 0.9rem;
@@ -563,18 +543,18 @@
       }
       /* Compact mobile row: small icon | (time + title + body), all inline */
       .program {
-        gap: 1.35rem;
+        gap: 1.85rem;
       }
       .program-item {
         grid-template-columns: 52px minmax(0, 1fr);
         column-gap: 0.85rem;
-        row-gap: 0.25rem;
+        row-gap: 0.4rem;
         align-items: start;
         text-align: left;
         max-width: 28rem;
         margin-left: auto;
         margin-right: auto;
-        padding: 0.15rem 0;
+        padding: 0.4rem 0;
       }
       .program-icon-image {
         grid-column: 1;
@@ -587,45 +567,41 @@
       .program-time {
         grid-column: 2;
         grid-row: 1;
-        font-size: 1.25rem;
+        font-size: 1.28rem;
         text-align: left;
-        padding-top: 0;
-        line-height: 1.1;
-        color: #6f6250;
+        padding: 0 0 0.52rem;
+        line-height: 1.2;
+        color: var(--gold);
       }
       .program-time-slot {
-        font-size: 0.82rem;
-        letter-spacing: 0.08em;
-        line-height: 1.1;
-        padding-top: 0;
-        color: #6f6250;
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        line-height: 1.25;
+        padding: 0 0 0.52rem;
+        text-align: left;
+        color: var(--gold);
       }
       .program-item > div:last-child {
         grid-column: 2;
         grid-row: 2 / span 2;
       }
       .program-title {
-        font-size: 1.02rem;
-        line-height: 1.3;
+        font-size: 1.12rem;
+        line-height: 1.32;
+      }
+      .program-item > div > .program-title + .program-text {
+        margin-top: 0.62rem;
       }
       .program-text { max-width: 100%; }
       .program-text p:first-child {
-        font-size: 1.02rem;
-        line-height: 1.3;
+        font-size: 1.08rem;
+        line-height: 1.38;
       }
       .program-text p {
         font-size: 0.93rem;
-        line-height: 1.5;
-        margin-top: 0.35rem;
+        line-height: 1.62;
+        margin-top: 0.52rem;
       }
-      .rsvp-section .rsvp-page-title {
-        margin-bottom: 1.75rem;
-        letter-spacing: 0.12em;
-      }
-      .rsvp-wrap { padding: 0 0.35rem 1.5rem; }
-      .rsvp-form { margin-top: 2rem; }
-      .rsvp-group { margin-bottom: 1.75rem; }
-      .rsvp-submit { width: 100%; max-width: none; }
     }
   </style>
 </head>
@@ -655,13 +631,16 @@
       <p class="lead" data-i18n="inviteText">Мы будем счастливы разделить с вами радость неповторимого для нас дня - дня нашей свадьбы. Приглашаем присоединиться к нашему празднику и украсить его своим присутствием.</p>
     </section>
 
-    <section class="reveal">
-      <h2 data-i18n="countdownTitle">До свадьбы осталось</h2>
-      <div class="countdown" data-target-date="2026-07-24T15:00:00+03:00">
-        <div class="count-box"><span class="count-value" data-days>00</span><span class="count-label" data-i18n="daysLabel">дней</span></div>
-        <div class="count-box"><span class="count-value" data-hours>00</span><span class="count-label" data-i18n="hoursLabel">часов</span></div>
-        <div class="count-box"><span class="count-value" data-minutes>00</span><span class="count-label" data-i18n="minutesLabel">минут</span></div>
-        <div class="count-box"><span class="count-value" data-seconds>00</span><span class="count-label" data-i18n="secondsLabel">секунд</span></div>
+    <section class="reveal countdown-section">
+      <h2 class="countdown-heading" data-i18n="countdownTitle">До свадьбы осталось</h2>
+      <p class="countdown-flourish" aria-hidden="true">✦</p>
+      <div class="countdown-plate">
+        <div class="countdown" data-target-date="2026-07-24T15:00:00+03:00">
+          <div class="count-box"><span class="count-value" data-days>00</span><span class="count-label" data-i18n="daysLabel">дней</span></div>
+          <div class="count-box"><span class="count-value" data-hours>00</span><span class="count-label" data-i18n="hoursLabel">часов</span></div>
+          <div class="count-box"><span class="count-value" data-minutes>00</span><span class="count-label" data-i18n="minutesLabel">минут</span></div>
+          <div class="count-box"><span class="count-value" data-seconds>00</span><span class="count-label" data-i18n="secondsLabel">секунд</span></div>
+        </div>
       </div>
     </section>
 
@@ -679,27 +658,39 @@
         </div>
         <div class="program">
         <article class="program-item reveal">
-          <div class="program-time">16:00</div>
+          <div class="program-time">15:00</div>
           <img
             class="program-icon-image"
             src="{% static 'core/img/program-icon-1.png' %}"
             alt=""
           >
           <div>
-            <p class="program-title" data-i18n="timeline1Title">Заселение в отель и Welcome-зона</p>
-            <p class="program-text" data-i18n="timeline1Text">Приглашаем вас заселиться в отель и присоединиться к welcome-зоне. Вас ждут лёгкие закуски, напитки и фотозона - настроимся на праздничный лад!</p>
+            <p class="program-title" data-i18n="timeline1Title">Заселение в отель</p>
+            <p class="program-text" data-i18n="timeline1Text">Оставляем вещи, отдыхаем после дороги и готовимся к началу нашего праздника</p>
           </div>
         </article>
         <article class="program-item reveal">
-          <div class="program-time">17:00</div>
+          <div class="program-time">16:00</div>
+          <img
+            class="program-icon-image"
+            src="{% static 'core/img/program-icon-2.png' %}"
+            alt=""
+          >
+          <div>
+            <p class="program-title" data-i18n="timeline2Title">Welcome-зона</p>
+            <p class="program-text" data-i18n="timeline2Text">Собираемся перед началом торжества: время для первых встреч, улыбок, лёгких закусок и праздничного настроения 🥂</p>
+          </div>
+        </article>
+        <article class="program-item reveal">
+          <div class="program-time">16:30</div>
           <img
             class="program-icon-image"
             src="{% static 'core/img/program-icon-3.png' %}"
             alt=""
           >
           <div>
-            <p class="program-title" data-i18n="timeline2Title">Начало торжества 🍽️</p>
-            <p class="program-text" data-i18n="timeline2Text">Время вкусной еды, танцев и развлечений</p>
+            <p class="program-title" data-i18n="timeline3Title">Начало свадебного вечера 🍽️</p>
+            <p class="program-text" data-i18n="timeline3Text">Торжественная часть, поздравления, ужин, танцы и самые яркие моменты нашего праздника ❤️</p>
           </div>
         </article>
         <article class="program-item reveal">
@@ -710,8 +701,8 @@
             alt=""
           >
           <div>
-            <p class="program-title" data-i18n="timeline3Title">Завершение первого дня торжества</p>
-            <p class="program-text" data-i18n="timeline3Text">Волшебный вечер подошёл к концу - пора отдыхать! Ждём всех завтра для продолжения праздника!</p>
+            <p class="program-title" data-i18n="timeline4Title">Завершение первого дня праздника</p>
+            <p class="program-text" data-i18n="timeline4Text">Официальная часть подходит к концу, но впереди нас ждёт ещё целый день отдыха и веселья ✨</p>
           </div>
         </article>
         </div>
@@ -719,7 +710,7 @@
       <div class="program-day-block" role="region" aria-labelledby="program-day-2-heading">
         <div class="program-day-header reveal">
           <span class="program-day-index" aria-hidden="true">2</span>
-          <h3 class="program-day-title" id="program-day-2-heading" data-i18n="programDay2SectionTitle">Программа 2-го дня свадьбы - «Свободный день!»</h3>
+          <h3 class="program-day-title" id="program-day-2-heading" data-i18n="programDay2SectionTitle">Программа 2-го дня свадьбы - Свободный день ✨</h3>
         </div>
         <div class="program">
         <article class="program-item reveal">
@@ -731,9 +722,9 @@
           >
           <div>
             <div class="program-text" data-i18n="day2MorningBody">
-              <p><strong>Высыпаемся - отдыхаем в своё удовольствие!</strong></p>
-              <p>Завтрак (шведский стол) в основном корпусе</p>
-              <p>На второй день берем с собой вещи для активного отдыха (сменную лёгкую одежду, кроссовки, сланцы, купальники).</p>
+              <p>Неспешно просыпаемся и отдыхаем после первого дня праздника</p>
+              <p>Для гостей будет доступен завтрак - шведский стол в основном корпусе.</p>
+              <p>Не забудьте взять удобную одежду для активного отдыха: лёгкие вещи, кроссовки, сланцы и купальные принадлежности.</p>
             </div>
           </div>
         </article>
@@ -746,9 +737,9 @@
           >
           <div>
             <div class="program-text" data-i18n="day2DayBody">
-              <p><strong>Шашлыки и купание на Истринском водохранилище</strong></p>
-              <p>Свободное время - расслабляемся, гуляем, общаемся, смеёмся.</p>
-              <p>Обед (шведский стол) в основном корпусе</p>
+              <p>Продолжаем праздник на природе - шашлыки, купание и отдых у Истринского водохранилища</p>
+              <p>Время для прогулок, общения, смеха и тёплых моментов вместе.</p>
+              <p>Также для гостей предусмотрен обед - шведский стол в основном корпусе.</p>
             </div>
           </div>
         </article>
@@ -761,19 +752,18 @@
           >
           <div>
             <div class="program-text" data-i18n="day2EveningBody">
-              <p><strong>Дискотека в «клубе» базы отдыха</strong></p>
-              <p>Общение, обмен впечатлениями, весёлые моменты в кругу близких.</p>
-              <p>Ужин (шведский стол) в основном корпусе</p>
+              <p>Вечером по желанию встречаемся на дискотеке в клубе базы отдыха</p>
+              <p>Также можно поужинать в основном корпусе - шведский стол.</p>
             </div>
           </div>
         </article>
         </div>
-        <p class="program-rule reveal" data-i18n="programDay2Rule">Главное правило дня - отдыхать, смеяться и наслаждаться каждым моментом!</p>
+        <p class="program-rule reveal" data-i18n="programDay2Rule">Главная задача этого дня - отдыхать и наслаждаться каждым моментом!</p>
       </div>
       <div class="program-day-block" role="region" aria-labelledby="program-day-3-heading">
         <div class="program-day-header reveal">
           <span class="program-day-index" aria-hidden="true">3</span>
-          <h3 class="program-day-title" id="program-day-3-heading" data-i18n="programDay3SectionTitle">Программа 3‑го дня свадьбы</h3>
+          <h3 class="program-day-title" id="program-day-3-heading" data-i18n="programDay3SectionTitle">Программа 3-го дня - Завершение праздника</h3>
         </div>
         <div class="program">
         <article class="program-item reveal">
@@ -785,8 +775,7 @@
           >
           <div>
             <div class="program-text" data-i18n="day3MorningBody">
-              <p><strong>Спокойное пробуждение.</strong></p>
-              <p>Завтрак (шведский стол) в основном корпусе - последний совместный приём пищи на празднике.</p>
+              <p>Спокойно просыпаемся и завтракаем в основном корпусе ☕</p>
             </div>
           </div>
         </article>
@@ -799,9 +788,8 @@
           >
           <div>
             <div class="program-text" data-i18n="day3CheckoutBody">
-              <p><strong>Выселение из номеров.</strong></p>
-              <p>Разъезжаемся по домам - конец свадьбы и мини‑отпуска! ✨</p>
-              <p>Последние объятия!</p>
+              <p><strong>До 13:00 - Выселение из номеров.</strong></p>
+              <p>Обнимаемся, делимся впечатлениями и разъезжаемся по домам - с тёплыми воспоминаниями о нашей свадьбе и маленьком совместном путешествии</p>
             </div>
           </div>
         </article>
@@ -840,116 +828,6 @@
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-      </div>
-    </section>
-
-    <section id="rsvp" class="rsvp-section reveal">
-      <h2 class="rsvp-page-title" data-i18n="rsvpTitle">Присутствие на торжестве</h2>
-      <div class="rsvp-wrap">
-        <p class="rsvp-intro" data-i18n="rsvpIntro1">Ваши ответы на вопросы очень помогут нам при организации торжества.</p>
-        <p class="rsvp-intro" data-i18n="rsvpIntro2">Будем ждать ответ до 24.07.2026 г.</p>
-
-        {% if rsvp_success %}
-          <p class="rsvp-success" data-i18n="rsvpSuccessText">Спасибо! Ваш ответ сохранен.</p>
-        {% endif %}
-
-        <form id="rsvp-form" class="rsvp-form" method="post" novalidate>
-          {% csrf_token %}
-          <div class="rsvp-group">
-            <p class="rsvp-label" data-i18n="attendanceQuestion">Сможете ли вы присутствовать на торжестве?</p>
-            <ul class="rsvp-list">
-              <li class="rsvp-item">
-                <label>
-                  <input type="radio" name="attendance" value="coming" {% if selected_attendance == "coming" %}checked{% endif %}>
-                  <span data-i18n="attendanceComing">Я приду / Мы придем</span>
-                </label>
-              </li>
-              <li class="rsvp-item">
-                <label>
-                  <input type="radio" name="attendance" value="not_coming" {% if selected_attendance == "not_coming" %}checked{% endif %}>
-                  <span data-i18n="attendanceNotComing">Прийти не получится</span>
-                </label>
-              </li>
-              <li class="rsvp-item">
-                <label>
-                  <input type="radio" name="attendance" value="plus_one" {% if selected_attendance == "plus_one" %}checked{% endif %}>
-                  <span data-i18n="attendancePlusOne">Буду +1</span>
-                </label>
-              </li>
-            </ul>
-            {% if rsvp_form.errors.attendance %}
-              <p class="rsvp-errors">{{ rsvp_form.errors.attendance.0 }}</p>
-            {% endif %}
-          </div>
-
-          <div class="rsvp-group rsvp-group-name">
-            <div class="rsvp-name-block">
-              <label class="rsvp-name-label" for="rsvp-full-name">
-                <span class="rsvp-name-title" data-i18n="nameTitle">Имя Фамилия</span>
-                <span class="rsvp-name-hint" data-i18n="nameHelp">если вы будете парой или семьей, то внесите все имена и фамилии</span>
-              </label>
-              <input
-                id="rsvp-full-name"
-                class="rsvp-name-input"
-                type="text"
-                name="full_name"
-                value="{{ full_name_value }}"
-                required
-                autocomplete="name"
-              >
-            </div>
-            {% if rsvp_form.errors.full_name %}
-              <p class="rsvp-errors">{{ rsvp_form.errors.full_name.0 }}</p>
-            {% endif %}
-          </div>
-
-          <hr class="rsvp-divider">
-
-          <div class="rsvp-group">
-            <p class="rsvp-label" data-i18n="drinksTitle">Предпочтения по напиткам:</p>
-            <p class="rsvp-help" data-i18n="drinksHelp">можно выбрать несколько вариантов</p>
-            <ul class="rsvp-list">
-              <li class="rsvp-item">
-                <label>
-                  <input type="checkbox" name="drinks" value="red_wine" {% if "red_wine" in selected_drinks %}checked{% endif %}>
-                  <span data-i18n="drinkRedWine">Вино красное</span>
-                </label>
-              </li>
-              <li class="rsvp-item">
-                <label>
-                  <input type="checkbox" name="drinks" value="white_wine" {% if "white_wine" in selected_drinks %}checked{% endif %}>
-                  <span data-i18n="drinkWhiteWine">Вино белое</span>
-                </label>
-              </li>
-              <li class="rsvp-item">
-                <label>
-                  <input type="checkbox" name="drinks" value="whisky" {% if "whisky" in selected_drinks %}checked{% endif %}>
-                  <span data-i18n="drinkWhisky">Виски</span>
-                </label>
-              </li>
-              <li class="rsvp-item">
-                <label>
-                  <input type="checkbox" name="drinks" value="vodka" {% if "vodka" in selected_drinks %}checked{% endif %}>
-                  <span data-i18n="drinkVodka">Водка</span>
-                </label>
-              </li>
-              <li class="rsvp-item">
-                <label>
-                  <input type="checkbox" name="drinks" value="champagne" {% if "champagne" in selected_drinks %}checked{% endif %}>
-                  <span data-i18n="drinkChampagne">Шампанское</span>
-                </label>
-              </li>
-              <li class="rsvp-item">
-                <label>
-                  <input type="checkbox" name="drinks" value="soft" {% if "soft" in selected_drinks %}checked{% endif %}>
-                  <span data-i18n="drinkSoft">Что-нибудь безалкогольное</span>
-                </label>
-              </li>
-            </ul>
-          </div>
-
-          <button class="rsvp-submit" type="submit" data-i18n="submitBtn">Отправить</button>
-        </form>
       </div>
     </section>
   </main>
@@ -1042,50 +920,32 @@
           secondsLabel: "секунд",
           timelineTitle: "Программа свадьбы",
           programDay1Title: "Программа 1-го дня свадьбы",
-          timeline1Title: "Заселение в отель и Welcome-зона",
-          timeline1Text: "Приглашаем вас заселиться в отель и присоединиться к welcome-зоне. Вас ждут лёгкие закуски, напитки и фотозона - настроимся на праздничный лад!",
-          timeline2Title: "Начало торжества 🍽️",
-          timeline2Text: "Время вкусной еды, танцев и развлечений",
-          timeline3Title: "Завершение первого дня торжества",
-          timeline3Text: "Волшебный вечер подошёл к концу - пора отдыхать! Ждём всех завтра для продолжения праздника!",
-          programDay2SectionTitle: "Программа 2-го дня свадьбы - «Свободный день!»",
+          timeline1Title: "Заселение в отель",
+          timeline1Text: "Оставляем вещи, отдыхаем после дороги и готовимся к началу нашего праздника",
+          timeline2Title: "Welcome-зона",
+          timeline2Text: "Собираемся перед началом торжества: время для первых встреч, улыбок, лёгких закусок и праздничного настроения 🥂",
+          timeline3Title: "Начало свадебного вечера 🍽️",
+          timeline3Text: "Торжественная часть, поздравления, ужин, танцы и самые яркие моменты нашего праздника ❤️",
+          timeline4Title: "Завершение первого дня праздника",
+          timeline4Text: "Официальная часть подходит к концу, но впереди нас ждёт ещё целый день отдыха и веселья ✨",
+          programDay2SectionTitle: "Программа 2-го дня свадьбы - Свободный день ✨",
           day2MorningSlot: "Утро",
-          day2MorningBody: "<p><strong>Высыпаемся - отдыхаем в своё удовольствие!</strong></p><p>Завтрак (шведский стол) в основном корпусе</p><p>На второй день берем с собой вещи для активного отдыха (сменную лёгкую одежду, кроссовки, сланцы, купальники).</p>",
+          day2MorningBody: "<p>Неспешно просыпаемся и отдыхаем после первого дня праздника</p><p>Для гостей будет доступен завтрак - шведский стол в основном корпусе.</p><p>Не забудьте взять удобную одежду для активного отдыха: лёгкие вещи, кроссовки, сланцы и купальные принадлежности.</p>",
           day2DaySlot: "День",
-          day2DayBody: "<p><strong>Шашлыки и купание на Истринском водохранилище</strong></p><p>Свободное время - расслабляемся, гуляем, общаемся, смеёмся.</p><p>Обед (шведский стол) в основном корпусе</p>",
+          day2DayBody: "<p>Продолжаем праздник на природе - шашлыки, купание и отдых у Истринского водохранилища</p><p>Время для прогулок, общения, смеха и тёплых моментов вместе.</p><p>Также для гостей предусмотрен обед - шведский стол в основном корпусе.</p>",
           day2EveningSlot: "Вечер",
-          day2EveningBody: "<p><strong>Дискотека в «клубе» базы отдыха</strong></p><p>Общение, обмен впечатлениями, весёлые моменты в кругу близких.</p><p>Ужин (шведский стол) в основном корпусе</p>",
-          programDay2Rule: "Главное правило дня - отдыхать, смеяться и наслаждаться каждым моментом!",
-          programDay3SectionTitle: "Программа 3‑го дня свадьбы",
+          day2EveningBody: "<p>Вечером по желанию встречаемся на дискотеке в клубе базы отдыха</p><p>Также можно поужинать в основном корпусе - шведский стол.</p>",
+          programDay2Rule: "Главная задача этого дня - отдыхать и наслаждаться каждым моментом!",
+          programDay3SectionTitle: "Программа 3-го дня - Завершение праздника",
           day3MorningSlot: "Утро",
-          day3MorningBody: "<p><strong>Спокойное пробуждение.</strong></p><p>Завтрак (шведский стол) в основном корпусе - последний совместный приём пищи на празднике.</p>",
+          day3MorningBody: "<p>Спокойно просыпаемся и завтракаем в основном корпусе ☕</p>",
           day3CheckoutSlot: "До<br>13:00",
-          day3CheckoutBody: "<p><strong>Выселение из номеров.</strong></p><p>Разъезжаемся по домам - конец свадьбы и мини‑отпуска! ✨</p><p>Последние объятия!</p>",
+          day3CheckoutBody: "<p><strong>До 13:00 - Выселение из номеров.</strong></p><p>Обнимаемся, делимся впечатлениями и разъезжаемся по домам - с тёплыми воспоминаниями о нашей свадьбе и маленьком совместном путешествии</p>",
           locationTitle: "Локация",
           locationTextMain: "Наша свадьба пройдет на базе отдыха «Босиком» в Подмосковье на берегу Истринского водохранилища",
           locationHowTitle: "Как добраться?",
           locationTextSub: "Мы подготовили для вас карту, чтобы вы точно добрались и порадовали нас своим присутствием.",
-          rsvpTitle: "Присутствие на торжестве",
-          rsvpIntro1: "Ваши ответы на вопросы очень помогут нам при организации торжества.",
-          rsvpIntro2: "Будем ждать ответ до 24.07.2026 г.",
-          rsvpSuccessText: "Спасибо! Ваш ответ сохранен.",
-          attendanceQuestion: "Сможете ли вы присутствовать на торжестве?",
-          attendanceComing: "Я приду / Мы придем",
-          attendanceNotComing: "Прийти не получится",
-          attendancePlusOne: "Буду +1",
-          nameTitle: "Имя Фамилия",
-          nameHelp: "если вы будете парой или семьей, то внесите все имена и фамилии",
-          drinksTitle: "Предпочтения по напиткам:",
-          drinksHelp: "можно выбрать несколько вариантов",
-          drinkRedWine: "Вино красное",
-          drinkWhiteWine: "Вино белое",
-          drinkWhisky: "Виски",
-          drinkVodka: "Водка",
-          drinkChampagne: "Шампанское",
-          drinkSoft: "Что-нибудь безалкогольное",
-          submitBtn: "Отправить",
-          footerText: "Мы будем счастливы видеть вас! ❤",
-          submitAlert: "Спасибо! Ответ принят."
+          footerText: "Мы будем счастливы видеть вас! ❤"
         },
         en: {
           pageTitle: "Nikita and Anastasia",
@@ -1100,50 +960,32 @@
           secondsLabel: "seconds",
           timelineTitle: "Wedding weekend program",
           programDay1Title: "Day 1 - wedding program",
-          timeline1Title: "Hotel check-in & welcome zone",
-          timeline1Text: "Please check in and join the welcome zone. Light snacks, drinks and a photo corner await - let’s get into the festive mood!",
-          timeline2Title: "Celebration begins 🍽️",
-          timeline2Text: "Delicious food, dancing and entertainment",
-          timeline3Title: "End of day one",
-          timeline3Text: "The magical evening is over - time to rest! We’ll see everyone tomorrow to continue the celebration!",
-          programDay2SectionTitle: "Day 2 - “Free day!” wedding program",
+          timeline1Title: "Hotel check-in",
+          timeline1Text: "Leave your things, rest after the journey and get ready for our celebration to begin",
+          timeline2Title: "Welcome zone",
+          timeline2Text: "We gather before the reception: time for first meetings, smiles, light snacks and a festive mood 🥂",
+          timeline3Title: "Wedding reception begins 🍽️",
+          timeline3Text: "The formal part, toasts, dinner, dancing and the brightest moments of our celebration ❤️",
+          timeline4Title: "End of day one",
+          timeline4Text: "The official part is winding down, but we still have a whole day of rest and fun ahead ✨",
+          programDay2SectionTitle: "Day 2 - free day ✨",
           day2MorningSlot: "Morning",
-          day2MorningBody: "<p><strong>Sleep in and relax at your own pace</strong></p><p>Breakfast (buffet) in the main building</p><p>Bring clothes for active leisure: light change of clothes, trainers, sandals, swimwear</p>",
+          day2MorningBody: "<p>We wake up slowly and rest after the first day of the celebration</p><p>Breakfast - buffet - will be available for guests in the main building.</p><p>Bring comfortable clothes for active leisure: light layers, trainers, sandals and swimwear.</p>",
           day2DaySlot: "Day",
-          day2DayBody: "<p><strong>Barbecue and swimming at Istra Reservoir</strong></p><p>Free time - unwind, walk, chat and laugh</p><p>Lunch (buffet) in the main building</p>",
+          day2DayBody: "<p>We continue the celebration outdoors - barbecue, swimming and relaxing by the Istra Reservoir</p><p>Time for walks, conversation, laughter and warm moments together.</p><p>Lunch - buffet - is also provided for guests in the main building.</p>",
           day2EveningSlot: "Evening",
-          day2EveningBody: "<p><strong>Disco at the resort “club”</strong></p><p>Catching up, sharing impressions, fun moments with loved ones</p><p>Dinner (buffet) in the main building</p>",
-          programDay2Rule: "The golden rule of the day: rest, laugh and enjoy every moment!",
-          programDay3SectionTitle: "Day 3 - wedding program",
+          day2EveningBody: "<p>In the evening, those who wish can meet at the disco in the resort club</p><p>You can also have dinner in the main building - buffet.</p>",
+          programDay2Rule: "The main goal of this day is to rest and enjoy every moment!",
+          programDay3SectionTitle: "Day 3 - end of the celebration",
           day3MorningSlot: "Morning",
-          day3MorningBody: "<p><strong>A gentle start to the day.</strong></p><p>Breakfast (buffet) in the main building - our last shared meal of the celebration.</p>",
+          day3MorningBody: "<p>We wake up calmly and have breakfast in the main building ☕</p>",
           day3CheckoutSlot: "By<br>13:00",
-          day3CheckoutBody: "<p><strong>Check-out from rooms.</strong></p><p>We head home - the end of the wedding and our mini getaway! ✨</p><p>Final hugs!</p>",
+          day3CheckoutBody: "<p><strong>By 13:00 - check-out from rooms.</strong></p><p>We hug, share impressions and head home - with warm memories of our wedding and our little shared getaway</p>",
           locationTitle: "Location",
           locationTextMain: "Our wedding will be held at the “Bosikom” resort in the Moscow region on the shore of the Istra Reservoir",
           locationHowTitle: "How to get there",
           locationTextSub: "We’ve prepared a map so you can find your way easily and delight us with your presence.",
-          rsvpTitle: "Attendance Confirmation",
-          rsvpIntro1: "Your answers to these questions will help us a lot with organizing the celebration.",
-          rsvpIntro2: "We kindly ask for your response by 24.07.2026.",
-          rsvpSuccessText: "Thank you! Your response has been saved.",
-          attendanceQuestion: "Will you be able to attend the celebration?",
-          attendanceComing: "I will attend / We will attend",
-          attendanceNotComing: "I won't be able to attend",
-          attendancePlusOne: "I will come +1",
-          nameTitle: "First and Last Name",
-          nameHelp: "if you are attending as a couple or family, please include all names and surnames",
-          drinksTitle: "Drink preferences:",
-          drinksHelp: "you can choose multiple options",
-          drinkRedWine: "Red wine",
-          drinkWhiteWine: "White wine",
-          drinkWhisky: "Whisky",
-          drinkVodka: "Vodka",
-          drinkChampagne: "Champagne",
-          drinkSoft: "Non-alcoholic drinks",
-          submitBtn: "Submit",
-          footerText: "We will be happy to see you! ❤",
-          submitAlert: "Thank you! Your response has been received."
+          footerText: "We will be happy to see you! ❤"
         }
       };
 
