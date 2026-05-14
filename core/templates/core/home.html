@@ -144,12 +144,10 @@
     .countdown-plate {
       max-width: min(700px, 100%);
       margin: 1.35rem auto 0;
-      padding: clamp(1.45rem, 3.2vw, 2.1rem) clamp(0.25rem, 1.5vw, 1rem);
-      background: rgba(255, 253, 249, 0.72);
-      border: 1px solid var(--line);
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.9),
-        0 1px 0 rgba(255, 255, 255, 0.5);
+      padding: clamp(0.35rem, 1.5vw, 0.75rem) 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
     }
     .countdown {
       margin: 0 auto;
@@ -281,7 +279,7 @@
     .program-title {
       margin: 0;
       font-size: clamp(1.22rem, 2.2vw, 1.58rem);
-      font-weight: 600;
+      font-weight: 700;
       font-family: "Cormorant Garamond", serif;
       letter-spacing: 0.02em;
       line-height: 1.28;
@@ -310,13 +308,23 @@
       margin-bottom: 0.15rem;
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(1.12rem, 2vw, 1.38rem);
-      font-weight: 500;
+      font-weight: 700;
       line-height: 1.45;
       letter-spacing: 0.02em;
       color: #3a342c;
     }
     .program-text p:first-child strong {
-      font-weight: 500;
+      font-weight: 700;
+    }
+    /* Lead styling applies only when there is no .program-title above the block */
+    .program-item > div > .program-title + .program-text p:first-child {
+      font-family: inherit;
+      font-size: clamp(0.94rem, 2vw, 1.02rem);
+      font-weight: 400;
+      letter-spacing: normal;
+      line-height: 1.68;
+      color: #4d4740;
+      margin-bottom: 0;
     }
     .program-time-slot {
       font-family: "Cormorant Garamond", serif;
@@ -499,7 +507,7 @@
     }
     @media (max-width: 700px) {
       .countdown-plate {
-        padding: 1.2rem 0.65rem 1.35rem;
+        padding: 0.5rem 0 0.35rem;
       }
       .countdown {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -588,6 +596,7 @@
       .program-title {
         font-size: 1.12rem;
         line-height: 1.32;
+        font-weight: 700;
       }
       .program-item > div > .program-title + .program-text {
         margin-top: 0.62rem;
@@ -596,6 +605,7 @@
       .program-text p:first-child {
         font-size: 1.08rem;
         line-height: 1.38;
+        font-weight: 700;
       }
       .program-text p {
         font-size: 0.93rem;
@@ -721,6 +731,7 @@
             alt=""
           >
           <div>
+            <p class="program-title" data-i18n="day2MorningTitle">Неспешное утро</p>
             <div class="program-text" data-i18n="day2MorningBody">
               <p>Неспешно просыпаемся и отдыхаем после первого дня праздника</p>
               <p>Для гостей будет доступен завтрак - шведский стол в основном корпусе.</p>
@@ -736,6 +747,7 @@
             alt=""
           >
           <div>
+            <p class="program-title" data-i18n="day2DayTitle">Природа и отдых</p>
             <div class="program-text" data-i18n="day2DayBody">
               <p>Продолжаем праздник на природе - шашлыки, купание и отдых у Истринского водохранилища</p>
               <p>Время для прогулок, общения, смеха и тёплых моментов вместе.</p>
@@ -751,6 +763,7 @@
             alt=""
           >
           <div>
+            <p class="program-title" data-i18n="day2EveningTitle">Дискотека в клубе</p>
             <div class="program-text" data-i18n="day2EveningBody">
               <p>Вечером по желанию встречаемся на дискотеке в клубе базы отдыха</p>
               <p>Также можно поужинать в основном корпусе - шведский стол.</p>
@@ -774,6 +787,7 @@
             alt=""
           >
           <div>
+            <p class="program-title" data-i18n="day3MorningTitle">Спокойный завтрак</p>
             <div class="program-text" data-i18n="day3MorningBody">
               <p>Спокойно просыпаемся и завтракаем в основном корпусе ☕</p>
             </div>
@@ -787,6 +801,7 @@
             alt=""
           >
           <div>
+            <p class="program-title" data-i18n="day3CheckoutTitle">Выселение</p>
             <div class="program-text" data-i18n="day3CheckoutBody">
               <p><strong>До 13:00 - Выселение из номеров.</strong></p>
               <p>Обнимаемся, делимся впечатлениями и разъезжаемся по домам - с тёплыми воспоминаниями о нашей свадьбе и маленьком совместном путешествии</p>
@@ -930,16 +945,21 @@
           timeline4Text: "Официальная часть подходит к концу, но впереди нас ждёт ещё целый день отдыха и веселья ✨",
           programDay2SectionTitle: "Программа 2-го дня свадьбы - Свободный день ✨",
           day2MorningSlot: "Утро",
+          day2MorningTitle: "Неспешное утро",
           day2MorningBody: "<p>Неспешно просыпаемся и отдыхаем после первого дня праздника</p><p>Для гостей будет доступен завтрак - шведский стол в основном корпусе.</p><p>Не забудьте взять удобную одежду для активного отдыха: лёгкие вещи, кроссовки, сланцы и купальные принадлежности.</p>",
           day2DaySlot: "День",
+          day2DayTitle: "Природа и отдых",
           day2DayBody: "<p>Продолжаем праздник на природе - шашлыки, купание и отдых у Истринского водохранилища</p><p>Время для прогулок, общения, смеха и тёплых моментов вместе.</p><p>Также для гостей предусмотрен обед - шведский стол в основном корпусе.</p>",
           day2EveningSlot: "Вечер",
+          day2EveningTitle: "Дискотека в клубе",
           day2EveningBody: "<p>Вечером по желанию встречаемся на дискотеке в клубе базы отдыха</p><p>Также можно поужинать в основном корпусе - шведский стол.</p>",
           programDay2Rule: "Главная задача этого дня - отдыхать и наслаждаться каждым моментом!",
           programDay3SectionTitle: "Программа 3-го дня - Завершение праздника",
           day3MorningSlot: "Утро",
+          day3MorningTitle: "Спокойный завтрак",
           day3MorningBody: "<p>Спокойно просыпаемся и завтракаем в основном корпусе ☕</p>",
           day3CheckoutSlot: "До<br>13:00",
+          day3CheckoutTitle: "Выселение",
           day3CheckoutBody: "<p><strong>До 13:00 - Выселение из номеров.</strong></p><p>Обнимаемся, делимся впечатлениями и разъезжаемся по домам - с тёплыми воспоминаниями о нашей свадьбе и маленьком совместном путешествии</p>",
           locationTitle: "Локация",
           locationTextMain: "Наша свадьба пройдет на базе отдыха «Босиком» в Подмосковье на берегу Истринского водохранилища",
@@ -970,16 +990,21 @@
           timeline4Text: "The official part is winding down, but we still have a whole day of rest and fun ahead ✨",
           programDay2SectionTitle: "Day 2 - free day ✨",
           day2MorningSlot: "Morning",
+          day2MorningTitle: "Slow morning",
           day2MorningBody: "<p>We wake up slowly and rest after the first day of the celebration</p><p>Breakfast - buffet - will be available for guests in the main building.</p><p>Bring comfortable clothes for active leisure: light layers, trainers, sandals and swimwear.</p>",
           day2DaySlot: "Day",
+          day2DayTitle: "Lakeside day",
           day2DayBody: "<p>We continue the celebration outdoors - barbecue, swimming and relaxing by the Istra Reservoir</p><p>Time for walks, conversation, laughter and warm moments together.</p><p>Lunch - buffet - is also provided for guests in the main building.</p>",
           day2EveningSlot: "Evening",
+          day2EveningTitle: "Club disco",
           day2EveningBody: "<p>In the evening, those who wish can meet at the disco in the resort club</p><p>You can also have dinner in the main building - buffet.</p>",
           programDay2Rule: "The main goal of this day is to rest and enjoy every moment!",
           programDay3SectionTitle: "Day 3 - end of the celebration",
           day3MorningSlot: "Morning",
+          day3MorningTitle: "Quiet breakfast",
           day3MorningBody: "<p>We wake up calmly and have breakfast in the main building ☕</p>",
           day3CheckoutSlot: "By<br>13:00",
+          day3CheckoutTitle: "Check-out",
           day3CheckoutBody: "<p><strong>By 13:00 - check-out from rooms.</strong></p><p>We hug, share impressions and head home - with warm memories of our wedding and our little shared getaway</p>",
           locationTitle: "Location",
           locationTextMain: "Our wedding will be held at the “Bosikom” resort in the Moscow region on the shore of the Istra Reservoir",
