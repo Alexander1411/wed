@@ -57,4 +57,5 @@ print('ALLOWED_HOSTS:', settings.ALLOWED_HOSTS)
 \""
 
 echo ""
-echo "Done. Optional: sudo ufw allow OpenSSH && sudo ufw allow 'Nginx Full' && sudo ufw enable"
+echo "Done. No Django admin on this site. Optional firewall:"
+echo "  sudo ufw allow OpenSSH && sudo ufw allow 'Nginx Full' && sudo ufw enable"
