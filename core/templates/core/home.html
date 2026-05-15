@@ -326,21 +326,9 @@
       color: #4d4740;
       margin-bottom: 0;
     }
+    /* Same typography as .program-time (elements use both classes) */
     .program-time-slot {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(0.98rem, 2vw, 1.18rem);
-      font-weight: 600;
-      line-height: 1.3;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      padding: 0.2rem 0 0.65rem;
-      text-align: right;
-      border: none;
-      border-radius: 0;
-      border-bottom: 1px solid var(--line);
-      background: transparent;
-      box-shadow: none;
-      color: var(--gold);
+      text-transform: none;
     }
     .program-day-block {
       margin: 0 auto;
@@ -503,7 +491,6 @@
       .program-item { grid-template-columns: 7.15rem 76px minmax(0, 1fr); column-gap: 1rem; }
       .program-icon-image { width: 76px; height: 76px; }
       .program-time { font-size: clamp(1.45rem, 6vw, 1.9rem); padding: 0.15rem 0 0.48rem; }
-      .program-time-slot { font-size: clamp(0.88rem, 2.8vw, 1.05rem); padding: 0.2rem 0 0.48rem; }
     }
     @media (max-width: 700px) {
       .countdown-plate {
@@ -579,14 +566,6 @@
         text-align: left;
         padding: 0 0 0.52rem;
         line-height: 1.2;
-        color: var(--gold);
-      }
-      .program-time-slot {
-        font-size: 0.78rem;
-        letter-spacing: 0.12em;
-        line-height: 1.25;
-        padding: 0 0 0.52rem;
-        text-align: left;
         color: var(--gold);
       }
       .program-item > div:last-child {
@@ -724,7 +703,7 @@
         </div>
         <div class="program">
         <article class="program-item reveal">
-          <div class="program-time program-time-slot" data-i18n="day2MorningSlot">Утро</div>
+          <div class="program-time program-time-slot" data-i18n="day2MorningSlot">09:00–11:00</div>
           <img
             class="program-icon-image"
             src="{% static 'core/img/program-icon-1.png' %}"
@@ -734,13 +713,13 @@
             <p class="program-title" data-i18n="day2MorningTitle">Неспешное утро</p>
             <div class="program-text" data-i18n="day2MorningBody">
               <p>Неспешно просыпаемся и отдыхаем после первого дня праздника</p>
-              <p>Для гостей будет доступен завтрак - шведский стол в основном корпусе.</p>
+              <p>Для гостей будет доступен завтрак — шведский стол в основном корпусе с 09:00 до 11:00.</p>
               <p>Не забудьте взять удобную одежду для активного отдыха: лёгкие вещи, кроссовки, сланцы и купальные принадлежности.</p>
             </div>
           </div>
         </article>
         <article class="program-item reveal">
-          <div class="program-time program-time-slot" data-i18n="day2DaySlot">День</div>
+          <div class="program-time program-time-slot" data-i18n="day2DaySlot">14:00–16:00</div>
           <img
             class="program-icon-image"
             src="{% static 'core/img/program-icon-2.png' %}"
@@ -751,12 +730,12 @@
             <div class="program-text" data-i18n="day2DayBody">
               <p>Продолжаем праздник на природе - шашлыки, купание и отдых у Истринского водохранилища</p>
               <p>Время для прогулок, общения, смеха и тёплых моментов вместе.</p>
-              <p>Также для гостей предусмотрен обед - шведский стол в основном корпусе.</p>
+              <p>Также для гостей предусмотрен обед — шведский стол в основном корпусе с 14:00 до 16:00.</p>
             </div>
           </div>
         </article>
         <article class="program-item reveal">
-          <div class="program-time program-time-slot" data-i18n="day2EveningSlot">Вечер</div>
+          <div class="program-time program-time-slot" data-i18n="day2EveningSlot">19:00–21:00</div>
           <img
             class="program-icon-image"
             src="{% static 'core/img/program-icon-3.png' %}"
@@ -766,7 +745,7 @@
             <p class="program-title" data-i18n="day2EveningTitle">Дискотека в клубе</p>
             <div class="program-text" data-i18n="day2EveningBody">
               <p>Вечером по желанию встречаемся на дискотеке в клубе базы отдыха</p>
-              <p>Также можно поужинать в основном корпусе - шведский стол.</p>
+              <p>Также можно поужинать в основном корпусе — шведский стол с 19:00 до 21:00.</p>
             </div>
           </div>
         </article>
@@ -780,7 +759,7 @@
         </div>
         <div class="program">
         <article class="program-item reveal">
-          <div class="program-time program-time-slot" data-i18n="day3MorningSlot">Утро</div>
+          <div class="program-time program-time-slot" data-i18n="day3MorningSlot">09:00–11:00</div>
           <img
             class="program-icon-image"
             src="{% static 'core/img/program-icon-1.png' %}"
@@ -789,12 +768,12 @@
           <div>
             <p class="program-title" data-i18n="day3MorningTitle">Спокойный завтрак</p>
             <div class="program-text" data-i18n="day3MorningBody">
-              <p>Спокойно просыпаемся и завтракаем в основном корпусе ☕</p>
+              <p>Просыпаемся и завтракаем в основном корпусе с 09:00 до 11:00 ☕</p>
             </div>
           </div>
         </article>
         <article class="program-item reveal">
-          <div class="program-time program-time-slot" data-i18n="day3CheckoutSlot">До<br>13:00</div>
+          <div class="program-time program-time-slot" data-i18n="day3CheckoutSlot">до 13:00</div>
           <img
             class="program-icon-image"
             src="{% static 'core/img/program-icon-4.png' %}"
@@ -944,21 +923,21 @@
           timeline4Title: "Завершение первого дня праздника",
           timeline4Text: "Официальная часть подходит к концу, но впереди нас ждёт ещё целый день отдыха и веселья ✨",
           programDay2SectionTitle: "Программа 2-го дня свадьбы - Свободный день ✨",
-          day2MorningSlot: "Утро",
+          day2MorningSlot: "09:00–11:00",
           day2MorningTitle: "Неспешное утро",
-          day2MorningBody: "<p>Неспешно просыпаемся и отдыхаем после первого дня праздника</p><p>Для гостей будет доступен завтрак - шведский стол в основном корпусе.</p><p>Не забудьте взять удобную одежду для активного отдыха: лёгкие вещи, кроссовки, сланцы и купальные принадлежности.</p>",
-          day2DaySlot: "День",
+          day2MorningBody: "<p>Неспешно просыпаемся и отдыхаем после первого дня праздника</p><p>Для гостей будет доступен завтрак — шведский стол в основном корпусе с 09:00 до 11:00.</p><p>Не забудьте взять удобную одежду для активного отдыха: лёгкие вещи, кроссовки, сланцы и купальные принадлежности.</p>",
+          day2DaySlot: "14:00–16:00",
           day2DayTitle: "Природа и отдых",
-          day2DayBody: "<p>Продолжаем праздник на природе - шашлыки, купание и отдых у Истринского водохранилища</p><p>Время для прогулок, общения, смеха и тёплых моментов вместе.</p><p>Также для гостей предусмотрен обед - шведский стол в основном корпусе.</p>",
-          day2EveningSlot: "Вечер",
+          day2DayBody: "<p>Продолжаем праздник на природе - шашлыки, купание и отдых у Истринского водохранилища</p><p>Время для прогулок, общения, смеха и тёплых моментов вместе.</p><p>Также для гостей предусмотрен обед — шведский стол в основном корпусе с 14:00 до 16:00.</p>",
+          day2EveningSlot: "19:00–21:00",
           day2EveningTitle: "Дискотека в клубе",
-          day2EveningBody: "<p>Вечером по желанию встречаемся на дискотеке в клубе базы отдыха</p><p>Также можно поужинать в основном корпусе - шведский стол.</p>",
+          day2EveningBody: "<p>Вечером по желанию встречаемся на дискотеке в клубе базы отдыха</p><p>Также можно поужинать в основном корпусе — шведский стол с 19:00 до 21:00.</p>",
           programDay2Rule: "Главная задача этого дня - отдыхать и наслаждаться каждым моментом!",
           programDay3SectionTitle: "Программа 3-го дня - Завершение праздника",
-          day3MorningSlot: "Утро",
+          day3MorningSlot: "09:00–11:00",
           day3MorningTitle: "Спокойный завтрак",
-          day3MorningBody: "<p>Спокойно просыпаемся и завтракаем в основном корпусе ☕</p>",
-          day3CheckoutSlot: "До<br>13:00",
+          day3MorningBody: "<p>Просыпаемся и завтракаем в основном корпусе с 09:00 до 11:00 ☕</p>",
+          day3CheckoutSlot: "до 13:00",
           day3CheckoutTitle: "Выселение",
           day3CheckoutBody: "<p><strong>До 13:00 - Выселение из номеров.</strong></p><p>Обнимаемся, делимся впечатлениями и разъезжаемся по домам - с тёплыми воспоминаниями о нашей свадьбе и маленьком совместном путешествии</p>",
           locationTitle: "Локация",
@@ -989,21 +968,21 @@
           timeline4Title: "End of day one",
           timeline4Text: "The official part is winding down, but we still have a whole day of rest and fun ahead ✨",
           programDay2SectionTitle: "Day 2 - free day ✨",
-          day2MorningSlot: "Morning",
+          day2MorningSlot: "09:00–11:00",
           day2MorningTitle: "Slow morning",
-          day2MorningBody: "<p>We wake up slowly and rest after the first day of the celebration</p><p>Breakfast - buffet - will be available for guests in the main building.</p><p>Bring comfortable clothes for active leisure: light layers, trainers, sandals and swimwear.</p>",
-          day2DaySlot: "Day",
+          day2MorningBody: "<p>We wake up slowly and rest after the first day of the celebration</p><p>Breakfast — buffet in the main building from 09:00 to 11:00.</p><p>Bring comfortable clothes for active leisure: light layers, trainers, sandals and swimwear.</p>",
+          day2DaySlot: "14:00–16:00",
           day2DayTitle: "Lakeside day",
-          day2DayBody: "<p>We continue the celebration outdoors - barbecue, swimming and relaxing by the Istra Reservoir</p><p>Time for walks, conversation, laughter and warm moments together.</p><p>Lunch - buffet - is also provided for guests in the main building.</p>",
-          day2EveningSlot: "Evening",
+          day2DayBody: "<p>We continue the celebration outdoors - barbecue, swimming and relaxing by the Istra Reservoir</p><p>Time for walks, conversation, laughter and warm moments together.</p><p>Lunch — buffet in the main building from 14:00 to 16:00.</p>",
+          day2EveningSlot: "19:00–21:00",
           day2EveningTitle: "Club disco",
-          day2EveningBody: "<p>In the evening, those who wish can meet at the disco in the resort club</p><p>You can also have dinner in the main building - buffet.</p>",
+          day2EveningBody: "<p>In the evening, those who wish can meet at the disco in the resort club</p><p>You can also have dinner in the main building — buffet from 19:00 to 21:00.</p>",
           programDay2Rule: "The main goal of this day is to rest and enjoy every moment!",
           programDay3SectionTitle: "Day 3 - end of the celebration",
-          day3MorningSlot: "Morning",
+          day3MorningSlot: "09:00–11:00",
           day3MorningTitle: "Quiet breakfast",
-          day3MorningBody: "<p>We wake up calmly and have breakfast in the main building ☕</p>",
-          day3CheckoutSlot: "By<br>13:00",
+          day3MorningBody: "<p>We wake up and have breakfast in the main building from 09:00 to 11:00 ☕</p>",
+          day3CheckoutSlot: "by 13:00",
           day3CheckoutTitle: "Check-out",
           day3CheckoutBody: "<p><strong>By 13:00 - check-out from rooms.</strong></p><p>We hug, share impressions and head home - with warm memories of our wedding and our little shared getaway</p>",
           locationTitle: "Location",
