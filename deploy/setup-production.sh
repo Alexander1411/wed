@@ -45,8 +45,8 @@ sleep 1
 systemctl is-active wedding.service
 
 echo ""
-echo "Django settings check:"
-sudo -u wedding bash -lc "cd $APP_DIR && source .venv/bin/activate && python -c \"
+echo "Django settings check (with /etc/wedding/env loaded):"
+sudo -u wedding bash -lc "set -a && source $ENV_FILE && set +a && cd $APP_DIR && source .venv/bin/activate && python -c \"
 import os, django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 django.setup()
@@ -55,6 +55,13 @@ print('DEBUG:', settings.DEBUG)
 print('SECRET_KEY ok:', not settings.SECRET_KEY.startswith('django-insecure'))
 print('ALLOWED_HOSTS:', settings.ALLOWED_HOSTS)
 \""
+
+MAIN_PID="$(systemctl show wedding.service -p MainPID --value 2>/dev/null || true)"
+if [[ -n "$MAIN_PID" && "$MAIN_PID" != "0" && -r "/proc/$MAIN_PID/environ" ]]; then
+  echo ""
+  echo "Gunicorn process env (live):"
+  tr '\0' '\n' <"/proc/$MAIN_PID/environ" | grep '^DJANGO_' || echo "(no DJANGO_* in process — check EnvironmentFile)"
+fi
 
 echo ""
 echo "Done. No Django admin on this site. Optional firewall:"
