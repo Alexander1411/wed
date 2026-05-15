@@ -1,0 +1,15 @@
+[Unit]
+Description=wedding gunicorn
+After=network.target
+
+[Service]
+User=wedding
+Group=wedding
+WorkingDirectory=/home/wedding/app
+EnvironmentFile=/etc/wedding/env
+ExecStart=/home/wedding/app/.venv/bin/gunicorn config.wsgi:application --bind 127.0.0.1:8001 -k gthread --workers 2 --threads 25
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

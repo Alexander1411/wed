@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
+from django.core.exceptions import ImproperlyConfigured
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -90,11 +92,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 import dj_database_url
 
+_default_db_url = f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+_database_url = os.getenv("DATABASE_URL", _default_db_url)
+_use_db_ssl = not DEBUG and _database_url.startswith("postgres")
+
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        default=_default_db_url,
         conn_max_age=600,
-        ssl_require=not DEBUG,
+        ssl_require=_use_db_ssl,
     )
 }
 
@@ -142,7 +148,20 @@ else:
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 if not DEBUG:
+    if SECRET_KEY.startswith("django-insecure-"):
+        raise ImproperlyConfigured(
+            "Production requires DJANGO_SECRET_KEY in the environment."
+        )
+    if set(ALLOWED_HOSTS) <= {"127.0.0.1", "localhost"}:
+        raise ImproperlyConfigured(
+            "Production requires DJANGO_ALLOWED_HOSTS (your domain and server IP)."
+        )
+
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
 
